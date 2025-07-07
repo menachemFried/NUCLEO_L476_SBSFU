@@ -1,0 +1,70 @@
+Deep Research Request for STM32 SBSFU Project: Prebuild Script Enhancement
+
+Introduction:
+
+I am seeking deep research assistance for my project, focusing on the STM32 Secure Boot and Secure Firmware Update (SBSFU) scripts. My objective is to enhance the existing functionalities and implement new features within this framework. I previously encountered limitations with the current Gemini assistant in Visual Studio Code, including message truncation and lengthy processing times, which necessitates a more powerful analysis module.
+
+Provided Files and Their Significance:
+
+To facilitate a comprehensive understanding of my project, I am providing the following sets of files. These files offer insights into both the original STM32 SBSFU examples and my current project modifications:
+
+    Original STM SBSFU File Tree and Scripts (originial STM SBSFU filetree and Scripts.txt):
+    This document outlines the standard file structure and key scripts from the untouched STM32 Nucleo-L476RG SBSFU example. It serves as the baseline for understanding the original design and functionality. It details the organization of the Core and SBSFU modules, including application logic (App) and hardware-specific interfaces (Target), along with critical build scripts.
+
+    My Boot (SBSFU) Project Tree (L476_SBSFU Project tree.txt):
+    This file describes the directory structure of my current Secure Bootloader (SBSFU) project. It is derived directly from the original STM SBSFU example but reflects my workspace's specific organization and any top-level additions. This helps in understanding the context of the bootloader's implementation.
+
+    My Application Project Tree (L476_USER_APP Project tree.txt):
+    This document maps out the file structure of my user application project. It showcases how the application code is organized, including its core functionalities, and notably highlights the Common/KeysAndImages_Util directory where Python scripts for image preparation reside.
+
+    My Application Project Code (L476_USER_APP Code.txt):
+    This comprehensive file contains the source code for my user application. It includes C header and source files (main.h/.c, com.h/.c, flash_if.h/.c, fw_update_app.h/.c, se_user_code.h/.c, sfu_app_new_image.h/.c, stm32l4xx_hal_conf.h, stm32l4xx_it.h/.c, test_protections.h/.c, ymodem.h/.c), Python scripts for cryptographic operations (keys.py, prepareimage.py, translate_key.py), and linker scripts (STM32L476RGTx.ld, mapping_export.h, mapping_fwimg.ld, mapping_sbsfu.ld).
+
+    My Boot (SBSFU) Project Code (L476_SBSFU Code.txt):
+    This file provides the source code for my Secure Bootloader project. It includes C header and source files for the BFU application logic and low-level drivers, along with linker scripts specific to the SBSFU. This file also contains the template scripts for different cryptographic schemes.
+
+Focus of the Research:
+
+The primary focus of this research is on the interaction and implementation details within the build process, particularly concerning cryptographic operations and debugging.
+
+The prebuild.sh script (located in SECoreBin/Scripts) plays a crucial role by selecting the appropriate cryptographic scheme (e.g., SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM, SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256, SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256) based on project configuration. This chosen scheme's corresponding script is then copied to Common/Scripts/postbuild.sh (or linked, depending on the environment). This postbuild.sh script is responsible for critical post-compilation tasks such as firmware encryption, signing, packaging (creating .sfb files), and merging the user application with the SBSFU binary.
+
+I have already initiated improvements to these scripts and am looking for advanced assistance to further refine and expand their capabilities.
+
+Specific Deep Research Task: Prebuild Script Review and Enhancement
+
+I need a thorough review and enhancement of my prebuild.sh script to improve its clarity, robustness, and debugging output.
+
+Detailed Request:
+
+    Consistent Variable Logging:
+
+        Review my existing prebuild.sh script (from L476_SBSFU Code.txt -> L476_SBSFU\SECoreBin\Scripts\prebuild.sh).
+
+        Ensure that all variables that are created, defined, or used within the prebuild.sh script are consistently logged to the output.
+
+        The logging format for these variables should maintain the same absolute path representation and overall uniformity as currently implemented in the three SECBOOT_*.sh post-build scripts (e.g., SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh in L476_SBSFU Code.txt -> Applications\2_Images\2_Images_SECoreBin\STM32CubeIDE\SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh). This includes variable names, their absolute values, and any descriptive text.
+
+    Code Clarity and Robustness Review:
+
+        Analyze the prebuild.sh script for areas where its code can be made more clear, readable, and maintainable. This could involve:
+
+            Improving variable naming conventions.
+
+            Adding comments to explain complex logic or critical sections.
+
+            Refactoring repetitive code blocks into functions.
+
+            Enhancing error handling (e.g., explicit checks for command success/failure beyond just ret=$?).
+
+            Optimizing path handling and directory navigation to prevent potential issues.
+
+            Identifying and suggesting fixes for any potential "weaknesses" in the script's logic that could lead to unexpected behavior or failures in different environments (e.g., cross-platform compatibility for paths, robust file existence checks).
+
+    Refinement of prepareimage Tool Selection Logic:
+
+        Pay special attention to the section where the prepareimage tool is selected (either Python script or Windows executable).
+
+        Suggest improvements to make this selection process more robust, efficient, and clearly communicated in the logs.
+
+Please provide the revised prebuild.sh script with all suggested improvements and a clear, concise explanation for each modification, especially focusing on how it enhances clarity, robustness, and variable logging consistency

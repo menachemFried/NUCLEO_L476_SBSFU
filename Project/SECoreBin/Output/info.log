@@ -1,0 +1,12 @@
+[LINE 53 - INFO] prebuild.sh started.
+[LINE 97 - INFO] Using Windows executable for prepareimage.
+[LINE 113 - INFO] Cleaning up previous build artifacts...
+[LINE 118 - INFO] Determining crypto scheme from se_crypto_config.h...
+[LINE 130 - INFO] Crypto scheme selected: SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256
+[LINE 134 - INFO] Generating assembly key file: se_key.s
+[LINE 166 - INFO] Adding OEM Key 1 from OEM_KEY_COMPANY1_key_AES_CBC.bin
+[LINE 178 - INFO] Adding ECC Public Key 1 from ECCKEY1.txt
+[LINE 185 - INFO] Assembly key file generation complete.
+[LINE 189 - INFO] Setting up post-build script...
+[LINE 199 - INFO] Copying 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Scripts/SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts/postbuild.sh'
+[LINE 207 - INFO] Pre-build script finished successfully.

@@ -1,0 +1,730 @@
+L476_SBSFU
+ ┣ .settings
+ ┃ ┗ org.eclipse.core.resources.prefs
+ ┣ BFU
+ ┃ ┣ .settings
+ ┃ ┃ ┣ language.settings.xml
+ ┃ ┃ ┗ org.eclipse.core.resources.prefs
+ ┃ ┣ Application
+ ┃ ┃ ┣ BFU
+ ┃ ┃ ┃ ┣ App
+ ┃ ┃ ┃ ┃ ┣ app_sfu.h
+ ┃ ┃ ┃ ┃ ┣ sfu_boot.c
+ ┃ ┃ ┃ ┃ ┣ sfu_boot.h
+ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.c
+ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.h
+ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.c
+ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.h
+ ┃ ┃ ┃ ┃ ┣ sfu_def.h
+ ┃ ┃ ┃ ┃ ┣ sfu_error.c
+ ┃ ┃ ┃ ┃ ┣ sfu_error.h
+ ┃ ┃ ┃ ┃ ┣ sfu_fsm_states.h
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.c
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_internal.h
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.c
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_regions.h
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_services.h
+ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.c
+ ┃ ┃ ┃ ┃ ┣ sfu_loader.c
+ ┃ ┃ ┃ ┃ ┣ sfu_loader.h
+ ┃ ┃ ┃ ┃ ┣ sfu_new_image.c
+ ┃ ┃ ┃ ┃ ┣ sfu_new_image.h
+ ┃ ┃ ┃ ┃ ┣ sfu_standalone_loader.h
+ ┃ ┃ ┃ ┃ ┣ sfu_test.c
+ ┃ ┃ ┃ ┃ ┣ sfu_test.h
+ ┃ ┃ ┃ ┃ ┗ sfu_trace.h
+ ┃ ┃ ┃ ┗ Target
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level.c
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level.h
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.c
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.h
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.c
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.h
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.c
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.h
+ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.c
+ ┃ ┃ ┃ ┃ ┗ sfu_low_level_security.h
+ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┣ Inc
+ ┃ ┃ ┃ ┃ ┣ app_hw.h
+ ┃ ┃ ┃ ┃ ┣ main.h
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_conf.h
+ ┃ ┃ ┃ ┃ ┗ stm32l4xx_it.h
+ ┃ ┃ ┃ ┗ Src
+ ┃ ┃ ┃ ┃ ┣ main.c
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.c
+ ┃ ┃ ┃ ┃ ┗ stm32l4xx_it.c
+ ┃ ┃ ┣ PeriphDrivers
+ ┃ ┃ ┗ STM32CubeIDE
+ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.c
+ ┃ ┃ ┃ ┗ syscalls.c
+ ┃ ┣ Debug
+ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┣ BFU
+ ┃ ┃ ┃ ┃ ┣ App
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.su
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┗ Target
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.su
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.d
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.o
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.su
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┃ ┗ Src
+ ┃ ┃ ┃ ┃ ┃ ┣ main.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ main.d
+ ┃ ┃ ┃ ┃ ┃ ┣ main.o
+ ┃ ┃ ┃ ┃ ┃ ┣ main.su
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.d
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.o
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.su
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.d
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.o
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.su
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┗ STM32CubeIDE
+ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.cyclo
+ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.d
+ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.o
+ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.su
+ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┣ syscalls.cyclo
+ ┃ ┃ ┃ ┃ ┣ syscalls.d
+ ┃ ┃ ┃ ┃ ┣ syscalls.o
+ ┃ ┃ ┃ ┃ ┗ syscalls.su
+ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.d
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.o
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.su
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.cyclo
+ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.d
+ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.o
+ ┃ ┃ ┃ ┃ ┗ system_stm32l4xx.su
+ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.su
+ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┣ se_interface_application.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_interface_application.d
+ ┃ ┃ ┃ ┃ ┣ se_interface_application.o
+ ┃ ┃ ┃ ┃ ┣ se_interface_application.su
+ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.d
+ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.o
+ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.su
+ ┃ ┃ ┃ ┃ ┣ se_interface_common.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_interface_common.d
+ ┃ ┃ ┃ ┃ ┣ se_interface_common.o
+ ┃ ┃ ┃ ┃ ┣ se_interface_common.su
+ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┣ startup_stm32l476xx.d
+ ┃ ┃ ┃ ┣ startup_stm32l476xx.o
+ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ makefile
+ ┃ ┃ ┣ objects.list
+ ┃ ┃ ┣ objects.mk
+ ┃ ┃ ┣ SBSFU.bin
+ ┃ ┃ ┣ SBSFU.elf
+ ┃ ┃ ┣ SBSFU.list
+ ┃ ┃ ┣ SBSFU.map
+ ┃ ┃ ┗ sources.mk
+ ┃ ┣ Doc
+ ┃ ┃ ┗ readme.txt
+ ┃ ┣ Drivers
+ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┣ STM32H7xx_HAL_Driver
+ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┣ Middlewares
+ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┣ Scripts
+ ┃ ┃ ┣ postbuild.sh
+ ┃ ┃ ┗ se_interface.txt
+ ┃ ┣ Startup
+ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┣ .cproject
+ ┃ ┣ .project
+ ┃ ┗ STM32L476RGTx.ld
+ ┣ Common
+ ┃ ┣ Binary_Keys
+ ┃ ┃ ┣ ECCKEY1.txt
+ ┃ ┃ ┣ nonce.bin
+ ┃ ┃ ┣ OEM_KEY_COMPANY1_key_AES_CBC.bin
+ ┃ ┃ ┗ OEM_KEY_COMPANY1_key_AES_GCM.bin
+ ┃ ┣ KeysAndImages_Util
+ ┃ ┃ ┣ win
+ ┃ ┃ ┃ ┣ prepareimage
+ ┃ ┃ ┃ ┃ ┣ Crypto
+ ┃ ┃ ┃ ┃ ┃ ┣ Cipher
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ARC4.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _chacha20.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aes.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aesni.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_arc2.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_blowfish.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cast.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cbc.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cfb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ctr.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des3.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ecb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_eksblowfish.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ocb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ofb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _Salsa20.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Hash
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2b.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2s.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_clmul.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_portable.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _keccak.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD2.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD4.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD5.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _poly1305.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _RIPEMD160.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA1.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA224.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA256.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA384.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _SHA512.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Math
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _modexp.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _montgomery.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Protocol
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _scrypt.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ PublicKey
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _ec_ws.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┗ Util
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _cpuid_c.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _strxor.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┣ Cryptodome
+ ┃ ┃ ┃ ┃ ┃ ┣ Cipher
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ARC4.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ARC4.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _chacha20.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _chacha20.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aes.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aes.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aesni.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_aesni.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_arc2.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_arc2.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_blowfish.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_blowfish.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cast.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cast.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cbc.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cbc.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cfb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_cfb.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ctr.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ctr.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des3.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_des3.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ecb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ecb.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_eksblowfish.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_eksblowfish.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ocb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ocb.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ofb.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _raw_ofb.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _Salsa20.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _Salsa20.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Hash
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2b.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2b.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2s.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _BLAKE2s.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_clmul.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_clmul.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_portable.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ghash_portable.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _keccak.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _keccak.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD2.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD2.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD4.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD4.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD5.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _MD5.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _poly1305.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _poly1305.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _RIPEMD160.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _RIPEMD160.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA1.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA1.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA224.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA224.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA256.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA256.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA384.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA384.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _SHA512.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _SHA512.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Math
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _modexp.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _modexp.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _montgomery.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ Protocol
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _scrypt.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _scrypt.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ PublicKey
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _ec_ws.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _ec_ws.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┗ Util
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _cpuid_c.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _cpuid_c.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _strxor.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _strxor.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┣ Include
+ ┃ ┃ ┃ ┃ ┃ ┗ pyconfig.h
+ ┃ ┃ ┃ ┃ ┣ lib2to3
+ ┃ ┃ ┃ ┃ ┃ ┣ tests
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ data
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ README
+ ┃ ┃ ┃ ┃ ┃ ┣ Grammar.txt
+ ┃ ┃ ┃ ┃ ┃ ┣ Grammar3.7.2.final.0.pickle
+ ┃ ┃ ┃ ┃ ┃ ┣ Grammar3.7.4.final.0.pickle
+ ┃ ┃ ┃ ┃ ┃ ┣ PatternGrammar.txt
+ ┃ ┃ ┃ ┃ ┃ ┣ PatternGrammar3.7.2.final.0.pickle
+ ┃ ┃ ┃ ┃ ┃ ┗ PatternGrammar3.7.4.final.0.pickle
+ ┃ ┃ ┃ ┃ ┣ numpy
+ ┃ ┃ ┃ ┃ ┃ ┣ core
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _multiarray_tests.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _multiarray_tests.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _multiarray_umath.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _multiarray_umath.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ fft
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ fftpack_lite.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ pocketfft_internal.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _pocketfft_internal.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┣ linalg
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ lapack_lite.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ lapack_lite.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _umath_linalg.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _umath_linalg.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┗ random
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ bit_generator.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ bounded_integers.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ common.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ entropy.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ generator.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ mt19937.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ mtrand.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ mtrand.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ pcg64.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ philox.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfc64.cp37-win32.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _bit_generator.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _bounded_integers.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _common.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _generator.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _mt19937.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _pcg64.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ _philox.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ _sfc64.cp37-win_amd64.pyd
+ ┃ ┃ ┃ ┃ ┣ win32com
+ ┃ ┃ ┃ ┃ ┃ ┗ shell
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ shell.pyd
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-console-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-datetime-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-debug-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-errorhandling-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-file-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-file-l1-2-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-file-l2-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-handle-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-heap-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-interlocked-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-libraryloader-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-localization-l1-2-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-memory-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-namedpipe-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-processenvironment-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-processthreads-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-processthreads-l1-1-1.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-profile-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-rtlsupport-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-string-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-synch-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-synch-l1-2-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-sysinfo-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-timezone-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-core-util-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-conio-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-convert-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-environment-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-filesystem-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-heap-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-locale-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-math-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-multibyte-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-process-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-runtime-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-stdio-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-string-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-time-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ api-ms-win-crt-utility-l1-1-0.dll
+ ┃ ┃ ┃ ┃ ┣ base_library.zip
+ ┃ ┃ ┃ ┃ ┣ libcrypto-1_1.dll
+ ┃ ┃ ┃ ┃ ┣ libopenblas.FN5FF57TWHUYLRG54LA6B33EZPHYZZL4.gfortran-win32.dll
+ ┃ ┃ ┃ ┃ ┣ libopenblas.JKAMQ5EVHIVCPXP2XZJB2RQPIN47S32M.gfortran-win32.dll
+ ┃ ┃ ┃ ┃ ┣ libopenblas.PYQHXLVVQ7VESDPUVUADXEVJOBGHJPAY.gfortran-win_amd64.dll
+ ┃ ┃ ┃ ┃ ┣ libssl-1_1.dll
+ ┃ ┃ ┃ ┃ ┣ mfc140u.dll
+ ┃ ┃ ┃ ┃ ┣ prepareimage.exe
+ ┃ ┃ ┃ ┃ ┣ prepareimage.exe.manifest
+ ┃ ┃ ┃ ┃ ┣ pyexpat.pyd
+ ┃ ┃ ┃ ┃ ┣ python37.dll
+ ┃ ┃ ┃ ┃ ┣ pythoncom37.dll
+ ┃ ┃ ┃ ┃ ┣ pywintypes37.dll
+ ┃ ┃ ┃ ┃ ┣ select.pyd
+ ┃ ┃ ┃ ┃ ┣ ucrtbase.dll
+ ┃ ┃ ┃ ┃ ┣ unicodedata.pyd
+ ┃ ┃ ┃ ┃ ┣ VCRUNTIME140.dll
+ ┃ ┃ ┃ ┃ ┣ win32api.pyd
+ ┃ ┃ ┃ ┃ ┣ win32pdh.pyd
+ ┃ ┃ ┃ ┃ ┣ win32trace.pyd
+ ┃ ┃ ┃ ┃ ┣ win32ui.pyd
+ ┃ ┃ ┃ ┃ ┣ win32wnet.pyd
+ ┃ ┃ ┃ ┃ ┣ _bz2.pyd
+ ┃ ┃ ┃ ┃ ┣ _contextvars.pyd
+ ┃ ┃ ┃ ┃ ┣ _ctypes.pyd
+ ┃ ┃ ┃ ┃ ┣ _decimal.pyd
+ ┃ ┃ ┃ ┃ ┣ _hashlib.pyd
+ ┃ ┃ ┃ ┃ ┣ _lzma.pyd
+ ┃ ┃ ┃ ┃ ┣ _multiprocessing.pyd
+ ┃ ┃ ┃ ┃ ┣ _queue.pyd
+ ┃ ┃ ┃ ┃ ┣ _socket.pyd
+ ┃ ┃ ┃ ┃ ┣ _ssl.pyd
+ ┃ ┃ ┃ ┃ ┗ _win32sysloader.pyd
+ ┃ ┃ ┃ ┗ prepareimage.exe
+ ┃ ┃ ┣ keys.py
+ ┃ ┃ ┣ prepareimage.py
+ ┃ ┃ ┣ readme.txt
+ ┃ ┃ ┣ requirements.txt
+ ┃ ┃ ┗ translate_key.py
+ ┃ ┗ Linker
+ ┃ ┃ ┣ mapping_export.h
+ ┃ ┃ ┣ mapping_fwimg.ld
+ ┃ ┃ ┗ mapping_sbsfu.ld
+ ┣ SECoreBin
+ ┃ ┣ .settings
+ ┃ ┃ ┣ language.settings.xml
+ ┃ ┃ ┗ org.eclipse.core.resources.prefs
+ ┃ ┣ Application
+ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┣ Inc
+ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.h
+ ┃ ┃ ┃ ┃ ┣ se_crypto_config.h
+ ┃ ┃ ┃ ┃ ┣ se_def_metadata.h
+ ┃ ┃ ┃ ┃ ┣ se_low_level.h
+ ┃ ┃ ┃ ┃ ┗ stm32l4xx_hal_conf.h
+ ┃ ┃ ┃ ┗ Src
+ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.c
+ ┃ ┃ ┃ ┃ ┗ se_low_level.c
+ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┣ data_init.c
+ ┃ ┃ ┃ ┗ syscalls.c
+ ┃ ┣ Debug
+ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┃ ┗ Src
+ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.d
+ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.o
+ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.su
+ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.d
+ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.o
+ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.su
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┃ ┣ data_init.cyclo
+ ┃ ┃ ┃ ┃ ┣ data_init.d
+ ┃ ┃ ┃ ┃ ┣ data_init.o
+ ┃ ┃ ┃ ┃ ┣ data_init.su
+ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┣ syscalls.cyclo
+ ┃ ┃ ┃ ┃ ┣ syscalls.d
+ ┃ ┃ ┃ ┃ ┣ syscalls.o
+ ┃ ┃ ┃ ┃ ┗ syscalls.su
+ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.su
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.d
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.o
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.su
+ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┣ se_callgate.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_callgate.d
+ ┃ ┃ ┃ ┃ ┣ se_callgate.o
+ ┃ ┃ ┃ ┃ ┣ se_callgate.su
+ ┃ ┃ ┃ ┃ ┣ se_crypto_common.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_crypto_common.d
+ ┃ ┃ ┃ ┃ ┣ se_crypto_common.o
+ ┃ ┃ ┃ ┃ ┣ se_crypto_common.su
+ ┃ ┃ ┃ ┃ ┣ se_exception.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_exception.d
+ ┃ ┃ ┃ ┃ ┣ se_exception.o
+ ┃ ┃ ┃ ┃ ┣ se_exception.su
+ ┃ ┃ ┃ ┃ ┣ se_fwimg.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_fwimg.d
+ ┃ ┃ ┃ ┃ ┣ se_fwimg.o
+ ┃ ┃ ┃ ┃ ┣ se_fwimg.su
+ ┃ ┃ ┃ ┃ ┣ se_startup.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_startup.d
+ ┃ ┃ ┃ ┃ ┣ se_startup.o
+ ┃ ┃ ┃ ┃ ┣ se_startup.su
+ ┃ ┃ ┃ ┃ ┣ se_user_application.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_user_application.d
+ ┃ ┃ ┃ ┃ ┣ se_user_application.o
+ ┃ ┃ ┃ ┃ ┣ se_user_application.su
+ ┃ ┃ ┃ ┃ ┣ se_utils.cyclo
+ ┃ ┃ ┃ ┃ ┣ se_utils.d
+ ┃ ┃ ┃ ┃ ┣ se_utils.o
+ ┃ ┃ ┃ ┃ ┣ se_utils.su
+ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┣ se_key.d
+ ┃ ┃ ┃ ┣ se_key.o
+ ┃ ┃ ┃ ┣ se_stack_smuggler_GNU.d
+ ┃ ┃ ┃ ┣ se_stack_smuggler_GNU.o
+ ┃ ┃ ┃ ┣ startup_stm32l476xx.d
+ ┃ ┃ ┃ ┣ startup_stm32l476xx.o
+ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┣ makefile
+ ┃ ┃ ┣ objects.list
+ ┃ ┃ ┣ objects.mk
+ ┃ ┃ ┣ SECoreBin.bin
+ ┃ ┃ ┣ SECoreBin.elf
+ ┃ ┃ ┣ SECoreBin.list
+ ┃ ┃ ┣ SECoreBin.map
+ ┃ ┃ ┣ sources.mk
+ ┃ ┃ ┗ subdir.mk
+ ┃ ┣ Doc
+ ┃ ┃ ┗ readme.txt
+ ┃ ┣ Drivers
+ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┣ Middlewares
+ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┣ Output
+ ┃ ┃ ┣ crypto.txt
+ ┃ ┃ ┗ output.txt
+ ┃ ┣ Scripts
+ ┃ ┃ ┣ prebuild.sh
+ ┃ ┃ ┣ SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh
+ ┃ ┃ ┣ SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh
+ ┃ ┃ ┗ SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh
+ ┃ ┣ Startup
+ ┃ ┃ ┣ se_key.s
+ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┣ .cproject
+ ┃ ┣ .project
+ ┃ ┗ STM32L476RGTx.ld
+ ┗ .project

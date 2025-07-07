@@ -1,0 +1,1404 @@
+
+original Nucleo-L476RG SBSFU file tree
+
+NUCLEO-L476RG
+ ┗ Applications
+ ┃ ┗ 2_Images
+ ┃ ┃ ┣ 2_Images_SBSFU
+ ┃ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┃ ┣ Inc
+ ┃ ┃ ┃ ┃ ┃ ┣ app_hw.h
+ ┃ ┃ ┃ ┃ ┃ ┣ main.h
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_conf.h
+ ┃ ┃ ┃ ┃ ┃ ┗ stm32l4xx_it.h
+ ┃ ┃ ┃ ┃ ┗ Src
+ ┃ ┃ ┃ ┃ ┃ ┣ main.c
+ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.c
+ ┃ ┃ ┃ ┃ ┃ ┗ stm32l4xx_it.c
+ ┃ ┃ ┃ ┣ EWARM
+ ┃ ┃ ┃ ┃ ┣ Project.ewd
+ ┃ ┃ ┃ ┃ ┣ Project.ewp
+ ┃ ┃ ┃ ┃ ┣ Project.eww
+ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┣ steering_file.txt
+ ┃ ┃ ┃ ┃ ┗ stm32l476xx_flash.icf
+ ┃ ┃ ┃ ┣ MDK-ARM
+ ┃ ┃ ┃ ┃ ┣ STM32L476RG_NUCLEO_2_Images_SBSFU
+ ┃ ┃ ┃ ┃ ┃ ┗ se_interface.txt
+ ┃ ┃ ┃ ┃ ┣ Project.uvoptx
+ ┃ ┃ ┃ ┃ ┣ Project.uvprojx
+ ┃ ┃ ┃ ┃ ┣ SBSFU.sct
+ ┃ ┃ ┃ ┃ ┣ SE_CoreBin.s
+ ┃ ┃ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┣ SBSFU
+ ┃ ┃ ┃ ┃ ┣ App
+ ┃ ┃ ┃ ┃ ┃ ┣ app_sfu.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_def.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fsm_states.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_internal.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_regions.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_services.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_standalone_loader.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.h
+ ┃ ┃ ┃ ┃ ┃ ┗ sfu_trace.h
+ ┃ ┃ ┃ ┃ ┗ Target
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.c
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.h
+ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.c
+ ┃ ┃ ┃ ┃ ┃ ┗ sfu_low_level_security.h
+ ┃ ┃ ┃ ┣ STM32CubeIDE
+ ┃ ┃ ┃ ┃ ┣ .settings
+ ┃ ┃ ┃ ┃ ┃ ┗ language.settings.xml
+ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.c
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ syscalls.c
+ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ App
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ Target
+ ┃ ┃ ┃ ┃ ┃ ┗ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┣ Debug
+ ┃ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Core
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_secorebin_Inc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_msp.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ syscalls.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ App
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_boot.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_loader.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_com_trace.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_error.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_common.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_no_swap.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_fwimg_swap.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_loader.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_new_image.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_test.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ Target
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_ext.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_flash_int.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_low_level_security.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ system_stm32l4xx.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_adc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_dma_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_i2c_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_spi_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_tim_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_application.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_application.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_application.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_application.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_bootloader.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_common.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_common.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_common.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_common.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ makefile
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.list
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU.bin
+ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU.elf
+ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU.list
+ ┃ ┃ ┃ ┃ ┃ ┣ SBSFU.map
+ ┃ ┃ ┃ ┃ ┃ ┣ se_interface_app.ld
+ ┃ ┃ ┃ ┃ ┃ ┗ sources.mk
+ ┃ ┃ ┃ ┃ ┣ Doc
+ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┃ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┣ .cproject
+ ┃ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┃ ┣ postbuild.sh
+ ┃ ┃ ┃ ┃ ┣ se_interface.txt
+ ┃ ┃ ┃ ┃ ┗ STM32L476RGTx.ld
+ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┗ readme.txt
+ ┃ ┃ ┣ 2_Images_SECoreBin
+ ┃ ┃ ┃ ┣ Binary
+ ┃ ┃ ┃ ┃ ┣ ECCKEY1.txt
+ ┃ ┃ ┃ ┃ ┣ iv.bin
+ ┃ ┃ ┃ ┃ ┣ nonce.bin
+ ┃ ┃ ┃ ┃ ┣ OEM_KEY_COMPANY1_key_AES_CBC.bin
+ ┃ ┃ ┃ ┃ ┗ OEM_KEY_COMPANY1_key_AES_GCM.bin
+ ┃ ┃ ┃ ┣ EWARM
+ ┃ ┃ ┃ ┃ ┣ prebuild.bat
+ ┃ ┃ ┃ ┃ ┣ Project.ewd
+ ┃ ┃ ┃ ┃ ┣ Project.ewp
+ ┃ ┃ ┃ ┃ ┣ Project.eww
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.bat
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.bat
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.bat
+ ┃ ┃ ┃ ┃ ┣ se_key.s
+ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┗ stm32l476xx_flash.icf
+ ┃ ┃ ┃ ┣ Inc
+ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.h
+ ┃ ┃ ┃ ┃ ┣ se_crypto_config.h
+ ┃ ┃ ┃ ┃ ┣ se_def_metadata.h
+ ┃ ┃ ┃ ┃ ┣ se_low_level.h
+ ┃ ┃ ┃ ┃ ┗ stm32l4xx_hal_conf.h
+ ┃ ┃ ┃ ┣ MDK-ARM
+ ┃ ┃ ┃ ┃ ┣ data_init.c
+ ┃ ┃ ┃ ┃ ┣ prebuild.bat
+ ┃ ┃ ┃ ┃ ┣ Project.uvoptx
+ ┃ ┃ ┃ ┃ ┣ Project.uvprojx
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.bat
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.bat
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.bat
+ ┃ ┃ ┃ ┃ ┣ SECoreBin.sct
+ ┃ ┃ ┃ ┃ ┣ se_key.s
+ ┃ ┃ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┣ Src
+ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.c
+ ┃ ┃ ┃ ┃ ┗ se_low_level.c
+ ┃ ┃ ┃ ┣ STM32CubeIDE
+ ┃ ┃ ┃ ┃ ┣ .settings
+ ┃ ┃ ┃ ┃ ┃ ┗ language.settings.xml
+ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_key.s
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ data_init.c
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ syscalls.c
+ ┃ ┃ ┃ ┃ ┣ Debug
+ ┃ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_key.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_key.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_stack_smuggler_GNU.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_stack_smuggler_GNU.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ data_init.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ data_init.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ data_init.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ data_init.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_bootloader.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_low_level.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ syscalls.su
+ ┃ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_firewall.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_callgate.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_callgate.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_callgate.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_callgate.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_common.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_common.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_common.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_crypto_common.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_exception.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_exception.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_exception.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_exception.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_fwimg.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_fwimg.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_fwimg.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_fwimg.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_startup.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_startup.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_startup.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_startup.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_application.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_application.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_application.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_application.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_utils.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_utils.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_utils.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_utils.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ makefile
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.list
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ SECoreBin.bin
+ ┃ ┃ ┃ ┃ ┃ ┣ SECoreBin.elf
+ ┃ ┃ ┃ ┃ ┃ ┣ SECoreBin.list
+ ┃ ┃ ┃ ┃ ┃ ┣ SECoreBin.map
+ ┃ ┃ ┃ ┃ ┃ ┣ sources.mk
+ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┣ Doc
+ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┣ .cproject
+ ┃ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┃ ┣ crypto.txt
+ ┃ ┃ ┃ ┃ ┣ output.txt
+ ┃ ┃ ┃ ┃ ┣ postbuild.sh
+ ┃ ┃ ┃ ┃ ┣ prebuild.sh
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh
+ ┃ ┃ ┃ ┃ ┣ SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh
+ ┃ ┃ ┃ ┃ ┗ STM32L476RGTx.ld
+ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┗ readme.txt
+ ┃ ┃ ┣ 2_Images_UserApp
+ ┃ ┃ ┃ ┣ Binary
+ ┃ ┃ ┃ ┃ ┣ SBSFU_UserApp.bin
+ ┃ ┃ ┃ ┃ ┗ UserApp.sfb
+ ┃ ┃ ┃ ┣ EWARM
+ ┃ ┃ ┃ ┃ ┣ Project.ewd
+ ┃ ┃ ┃ ┃ ┣ Project.ewp
+ ┃ ┃ ┃ ┃ ┣ Project.eww
+ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┗ stm32l476xx_flash.icf
+ ┃ ┃ ┃ ┣ Inc
+ ┃ ┃ ┃ ┃ ┣ com.h
+ ┃ ┃ ┃ ┃ ┣ common.h
+ ┃ ┃ ┃ ┃ ┣ flash_if.h
+ ┃ ┃ ┃ ┃ ┣ fw_update_app.h
+ ┃ ┃ ┃ ┃ ┣ main.h
+ ┃ ┃ ┃ ┃ ┣ se_user_code.h
+ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.h
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_conf.h
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.h
+ ┃ ┃ ┃ ┃ ┣ test_protections.h
+ ┃ ┃ ┃ ┃ ┗ ymodem.h
+ ┃ ┃ ┃ ┣ MDK-ARM
+ ┃ ┃ ┃ ┃ ┣ Project.uvoptx
+ ┃ ┃ ┃ ┃ ┣ Project.uvprojx
+ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┗ UserApp.sct
+ ┃ ┃ ┃ ┣ Src
+ ┃ ┃ ┃ ┃ ┣ com.c
+ ┃ ┃ ┃ ┃ ┣ common.c
+ ┃ ┃ ┃ ┃ ┣ flash_if.c
+ ┃ ┃ ┃ ┃ ┣ fw_update_app.c
+ ┃ ┃ ┃ ┃ ┣ main.c
+ ┃ ┃ ┃ ┃ ┣ se_user_code.c
+ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.c
+ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.c
+ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.c
+ ┃ ┃ ┃ ┃ ┣ test_protections.c
+ ┃ ┃ ┃ ┃ ┗ ymodem.c
+ ┃ ┃ ┃ ┣ STM32CubeIDE
+ ┃ ┃ ┃ ┃ ┣ .settings
+ ┃ ┃ ┃ ┃ ┃ ┗ language.settings.xml
+ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┣ SFU_Services
+ ┃ ┃ ┃ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ startup_stm32l476xx.s
+ ┃ ┃ ┃ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ syscalls.c
+ ┃ ┃ ┃ ┃ ┣ Debug
+ ┃ ┃ ┃ ┃ ┃ ┣ Application
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ SFU_Services
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ sfu_app_new_image.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Startup
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ startup_stm32l476xx.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ User
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ com.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ com.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ com.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ com.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ common.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ common.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ common.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ common.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ flash_if.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ flash_if.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ flash_if.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ flash_if.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ fw_update_app.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ fw_update_app.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ fw_update_app.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ fw_update_app.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ main.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_code.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_code.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_code.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ se_user_code.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_it.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ syscalls.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ test_protections.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ test_protections.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ test_protections.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ test_protections.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ ymodem.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ ymodem.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ ymodem.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ ymodem.su
+ ┃ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_nucleo.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ system_stm32l4xx.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ system_stm32l4xx.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_cortex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_crc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_flash_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_gpio.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_iwdg.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_pwr_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rcc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_rtc_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.cyclo
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.d
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.o
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ stm32l4xx_hal_uart_ex.su
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ subdir.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ makefile
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.list
+ ┃ ┃ ┃ ┃ ┃ ┣ objects.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ sources.mk
+ ┃ ┃ ┃ ┃ ┃ ┣ UserApp.bin
+ ┃ ┃ ┃ ┃ ┃ ┣ UserApp.elf
+ ┃ ┃ ┃ ┃ ┃ ┣ UserApp.list
+ ┃ ┃ ┃ ┃ ┃ ┗ UserApp.map
+ ┃ ┃ ┃ ┃ ┣ Doc
+ ┃ ┃ ┃ ┃ ┣ Drivers
+ ┃ ┃ ┃ ┃ ┃ ┣ BSP
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_Nucleo
+ ┃ ┃ ┃ ┃ ┃ ┣ CMSIS
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32L4xx_HAL_Driver
+ ┃ ┃ ┃ ┃ ┣ Middlewares
+ ┃ ┃ ┃ ┃ ┃ ┗ STM32_Secure_Engine
+ ┃ ┃ ┃ ┃ ┣ .cproject
+ ┃ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┃ ┣ output.txt
+ ┃ ┃ ┃ ┃ ┣ STM32L476RGTx.ld
+ ┃ ┃ ┃ ┃ ┗ UserApp.bin
+ ┃ ┃ ┃ ┣ .project
+ ┃ ┃ ┃ ┗ readme.txt
+ ┃ ┃ ┣ Linker_Common
+ ┃ ┃ ┃ ┣ EWARM
+ ┃ ┃ ┃ ┃ ┣ mapping_export.h
+ ┃ ┃ ┃ ┃ ┣ mapping_fwimg.icf
+ ┃ ┃ ┃ ┃ ┗ mapping_sbsfu.icf
+ ┃ ┃ ┃ ┣ MDK-ARM
+ ┃ ┃ ┃ ┃ ┣ mapping_fwimg.h
+ ┃ ┃ ┃ ┃ ┗ mapping_sbsfu.h
+ ┃ ┃ ┃ ┗ STM32CubeIDE
+ ┃ ┃ ┃ ┃ ┣ mapping_export.h
+ ┃ ┃ ┃ ┃ ┣ mapping_fwimg.ld
+ ┃ ┃ ┃ ┃ ┗ mapping_sbsfu.ld
+ ┃ ┃ ┗ readme.txt
+
+
+
+Applications\2_Images\2_Images_SECoreBin\STM32CubeIDE\prebuild.sh
+1	#!/bin/bash -
+2	#prebuild script
+3	echo prebuild.sh : started > $1/output.txt
+4	asmfile=$1/Application/Startup/se_key.s
+5	# comment this line to force python
+6	# python is used if  executable not found
+7	current_directory=`pwd`
+8	cd "$1/../../../../../../Middlewares/ST/STM32_Secure_Engine/Utilities/KeysAndImages"
+9	basedir=`pwd`
+10	cd "$current_directory"
+11
+12	# test if window executable usable
+13	prepareimage=$basedir/win/prepareimage/prepareimage.exe
+14	uname  | grep -i -e windows -e mingw > /dev/null 2>&1
+15
+16	if [ $? -eq 0 ] && [  -e "$prepareimage" ]; then
+17	  echo "prepareimage with windows executable" >> $1/output.txt
+18	  echo "prepareimage with windows executable"
+19	  cmd=""
+20	else
+21	  # line for python
+22	  echo "prepareimage with python script" >> $1/output.txt
+23	  echo "prepareimage with python script"
+24	  prepareimage=$basedir/prepareimage.py
+25	  unameOut="$(uname -s)"
+26	  case "${unameOut}" in
+27	    Linux*)     machine=Linux;;
+28	    Darwin*)    machine=Mac;;
+29	    CYGWIN*)    machine=windows;;
+30	    MINGW*)     machine=windows;;
+31	    Windows_NT*)  machine=windows;;
+32	    *)          machine="UNKNOWN:${unameOut}"
+33	    esac
+34	  if [ ${machine} == windows ];then
+35	    cmd=python
+36	  else
+37	    cmd=python3
+38	  fi
+39	fi
+40
+41	echo "$cmd $prepareimage" >> $1/output.txt
+42	crypto_h=$1/../Inc/se_crypto_config.h
+43
+44	#clean
+45	if [ -e "$1/crypto.txt" ]; then
+46	  rm $1"/crypto.txt"
+47	fi
+48
+49	if [ -e "$asmfile" ]; then
+50	  rm $asmfile
+51	fi
+52
+53	if [ -e "$1"/postbuild.sh ]; then
+54	  rm $1"/postbuild.sh"
+55	fi
+56
+57	#get crypto name
+58	command="$cmd $prepareimage conf "$crypto_h""
+59	echo $command
+60	crypto=`$command`
+61	echo $crypto > $1"/crypto.txt"
+62	echo "$crypto selected">> $1"/output.txt"
+63	echo $crypto selected
+64	ret=$?
+65
+66	cortex="V7M"
+67	echo "	.section .SE_Key_Data,\"a\",%progbits" > $asmfile
+68	echo "	.syntax unified" >> $asmfile
+69	echo "	.thumb " >> $asmfile
+70
+71	# AES keys part
+72	if [ $ret -eq 0 ]; then
+73	  type="vide"
+74	  if [ "$crypto" = "SECBOOT_AES128_GCM_A­ES128_GCM_AES128_GCM­" ]; then
+75	    type="GCM"
+76	  fi
+77	  if [ "$crypto" = "SECBOOT_ECCDSA_WITH_­AES128_CBC_SHA256" ]; then
+78	    type="CBC"
+79	  fi
+80
+81	  if [ $type != "vide" ]; then
+82	    oemkey="$1/../Binary/OEM_KEY_COMPANY1_key­_AES_$type.bin"
+83	    command=$cmd" "$prepareimage" trans -a GNU -k "$oemkey" -f SE_ReadKey_1 -v "$cortex
+84	    echo $command
+85	    $command >> $asmfile
+86	    ret=$?
+87
+88	    if [ $ret -eq 0 ]; then
+89	      oemkey="$1/../Binary/OEM_KEY_COMPANY2_key­_AES_$type.bin"
+90	      if [ -e "$oemkey" ]; then
+91	        command=$cmd" "$prepareimage" trans -a GNU -k "$oemkey" -f SE_ReadKey_2 -v "$cortex
+92	        echo $command
+93	        $command >> $asmfile
+94	        ret=$?
+95	      fi
+96	    fi
+97
+98	    if [ $ret -eq 0 ]; then
+99	        oemkey="$1/../Binary/OEM_KEY_COMPANY3_key­_AES_$type.bin"
+100	        if [ -e "$oemkey" ]; then
+101	            command=$cmd" "$prepareimage" trans -a GNU -k "$oemkey" -f SE_ReadKey_3 -v "$cortex
+102	            echo $command
+103	            $command >> $asmfile
+104	            ret=$?
+105	        fi
+106	    fi
+107	  fi
+108	fi
+109
+110	# ECC keys part
+111	if [ $ret -eq 0 ]; then
+112	  type="vide"
+113	  if [ "$crypto" = "SECBOOT_ECCDSA_WITHO­UT_ENCRYPT_SHA256" ]; then
+114	    type="ECC"
+115	  fi
+116	  if [ "$crypto" = "SECBOOT_ECCDSA_WITH_­AES128_CBC_SHA256" ]; then
+117	    type="ECC"
+118	  fi
+119
+120	  if [ $type != "vide" ]; then
+121	    ecckey=$1"/../Binary/ECCKEY1.txt"
+122	    command=$cmd" "$prepareimage" trans  -a GNU -k "$ecckey" -f SE_ReadKey_1_Pub -v "$cortex
+123	    echo $command
+124	    $command >> $asmfile
+125	    ret=$?
+126
+127	    if [ $ret -eq 0 ]; then
+128	      ecckey=$1"/../Binary/ECCKEY2.txt"
+129	      if [ -e "$ecckey" ]; then
+130	        command=$cmd" "$prepareimage" trans  -a GNU -k "$ecckey" -f SE_ReadKey_2_Pub -v "$cortex
+131	        echo $command
+132	        $command >> $asmfile
+133	        ret=$?
+134	      fi
+135	    fi
+136
+137	    if [ $ret -eq 0 ]; then
+138	      ecckey=$1"/../Binary/ECCKEY3.txt"
+139	      if [ -e "$ecckey" ]; then
+140	        command=$cmd" "$prepareimage" trans  -a GNU -k "$ecckey" -f SE_ReadKey_3_Pub -v "$cortex
+141	        echo $command
+142	        $command >> $asmfile
+143	        ret=$?
+144	      fi
+145	    fi
+146	  fi
+147	fi
+148	echo "    .end" >> $asmfile
+149
+150	if [ $ret -eq 0 ]; then
+151	#no error recopy post build script
+152	    uname  | grep -i -e windows -e mingw > /dev/null 2>&1
+153	    if [ $? -eq 0 ]; then
+154	        echo "recopy postbuild.sh script with "$crypto".sh script"
+155	        command="cat "$1"/"$crypto".sh"
+156	        $command > "$1"/"postbuild.sh"
+157	        ret=$?
+158	    else
+159	        echo "create symbolic link postbuild.sh to "$crypto".sh"
+160	        command="ln -s ./"$crypto".sh "$1"/postbuild.sh"
+161	        $command
+162	        ret=$?
+163	    fi
+164	fi
+165
+166	if [ $ret != 0 ]; then
+167	#an error
+168	echo $command : failed >> $1/output.txt
+169	echo $command : failed
+170	read -n 1 -s
+171	exit 1
+172	fi
+173	exit 0
+174
+175
+
+
+Applications\2_Images\2_Images_SECoreBin\STM32CubeIDE\SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh
+1	#!/bin/bash -
+2	#Post build for SECBOOT_AES128_GCM_W­ITH_AES128_GCM
+3	# arg1 is the build directory
+4	# arg2 is the elf file path+name
+5	# arg3 is the bin file path+name
+6	# arg4 is the firmware Id (1/2/3)
+7	# arg5 is the version
+8	# arg6 when present forces "bigelf" generation
+9	projectdir=$1
+10	FileName=${3##*/}
+11	execname=${FileName%.*}
+12	elf=$2
+13	bin=$3
+14	fwid=$4
+15	version=$5
+16
+17	SecureEngine=${0%/*}
+18
+19	userAppBinary=$projectdir"/../Binary"
+20
+21	sfu=$userAppBinary"/"$execname".sfu"
+22	sfb=$userAppBinary"/"$execname".sfb"
+23	sign=$userAppBinary"/"%execname".sign"
+24	headerbin=$userAppBinary"/"$execname"sfuh.bin"
+25	bigbinary=$userAppBinary"/SBSFU_"$execname".bin"
+26	elfbackup=$userAppBinary"/SBSFU_"$execname".elf"
+27
+28	nonce=$SecureEngine"/../Binary/nonce.bin"
+29	magic="SFU"$fwid
+30	oemkey=$SecureEngine"/../Binary/OEM_KEY_COMPANY"$fwid"_key_AES_GCM.bin"
+31	partialbin=$userAppBinary"/Partial"$execname".bin"
+32	partialsfb=$userAppBinary"/Partial"$execname".sfb"
+33	partialsfu=$userAppBinary"/Partial"$execname".sfu"
+34	partialsign=$userAppBinary"/Partial"$execname".sign"
+35	partialoffset=$userAppBinary"/Partial"$execname".offset"
+36	ref_userapp=$projectdir"/RefUserApp.bin"
+37	offset=512
+38	alignment=16
+39
+40	current_directory=`pwd`
+41	cd "$SecureEngine/../../"
+42	SecureDir=`pwd`
+43	cd "$current_directory"
+44	sbsfuelf="$SecureDir/2_Images_SBSFU/STM32CubeIDE/Debug/SBSFU.elf"
+45	current_directory=`pwd`
+46	cd "$1/../../../../../../Middlewares/ST/STM32_Secure_Engine/Utilities/KeysAndImages"
+47	basedir=`pwd`
+48	cd "$current_directory"
+49	# test if window executable usable
+50	prepareimage=$basedir"/win/prepareimage/prepareimage.exe"
+51	uname | grep -i -e windows -e mingw >/dev/null > /dev/null 2>&1
+52	if [ $? -eq 0 ] && [  -e "$prepareimage" ]; then
+53	  echo "prepareimage with windows executable"
+54	  PATH=$basedir"\\win\\prepareimage":$PATH > /dev/null 2>&1
+55	  cmd=""
+56	  prepareimage="prepareimage.exe"
+57	else
+58	  # line for python
+59	  echo "prepareimage with python script"
+60	  prepareimage=$basedir/prepareimage.py
+61	  cmd="python"
+62	fi
+63
+64	# Make sure we have a Binary sub-folder in UserApp folder
+65	if [ ! -e $userAppBinary ]; then
+66	mkdir $userAppBinary
+67	fi
+68
+69	command=$cmd" "$prepareimage" enc -k "$oemkey" -n "$nonce" "$bin" "$sfu
+70	$command > $projectdir"/output.txt"
+71	ret=$?
+72	if [ $ret -eq 0 ]; then
+73	  command=$cmd" "$prepareimage" sign -k "$oemkey" -n "$nonce" "$bin" "$sign
+74	  $command >> $projectdir"/output.txt"
+75	  ret=$?
+76	  if [ $ret -eq 0 ]; then
+77	    command=$cmd" "$prepareimage" pack -m "$magic" -k "$oemkey"  -r 112 -v "$version" -n "$nonce" -f "$sfu" -t "$sign" "$sfb" -o "$offset
+78	    $command >> $projectdir"/output.txt"
+79	    ret=$?
+80	    if [ $ret -eq 0 ]; then
+81	      command=$cmd" "$prepareimage" header -m "$magic" -k  "$oemkey" -r 112 -v "$version"  -n "$nonce" -f "$sfu" -t "$sign" -o "$offset" "$headerbin
+82	      $command >> $projectdir"/output.txt"
+83	      ret=$?
+84	      if [ $ret -eq 0 ]; then
+85	        command=$cmd" "$prepareimage" merge -v 0 -e 1 -i "$headerbin" -s "$sbsfuelf" -u "$elf" "$bigbinary
+86	        $command >> $projectdir"/output.txt"
+87	        ret=$?
+88	        #Partial image generation if reference userapp exists
+89	        if [ $ret -eq 0 ] && [ -e "$ref_userapp" ]; then
+90	          echo "Generating the partial image .sfb"
+91	          echo "Generating the partial image .sfb" >> $projectdir"/output.txt"
+92	          command=$cmd" "$prepareimage" diff -1 "$ref_userapp" -2 "$bin" "$partialbin" -a "$alignment" --poffset "$partialoffset
+93	          $command >> $projectdir"/output.txt"
+94	          ret=$?
+95	          if [ $ret -eq 0 ]; then
+96	            command=$cmd" "$prepareimage" enc -k "$oemkey" -i "$nonce" "$partialbin" "$partialsfu
+97	            $command >> $projectdir"/output.txt"
+98	            ret=$?
+99	            if [ $ret -eq 0 ]; then
+100	              command=$cmd" "$prepareimage" sign -k "$oemkey" -n "$nonce" "$partialbin" "$partialsign
+101	              $command >> $projectdir"/output.txt"
+102	              ret=$?
+103	              if [ $ret -eq 0 ]; then
+104	                command=$cmd" "$prepareimage" pack -m "$magic" -k "$oemkey" -r 112 -v "$version" -i "$nonce" -f "$sfu" -t "$sign" -o "$offset" --pfw "$partialsfu" --ptag "$partialsign" --poffset  "$partialoffset" "$partialsfb
+105	                $command >> $projectdir"/output.txt"
+106	                ret=$?
+107	              fi
+108	            fi
+109	          fi
+110	        fi
+111	        if [ $ret -eq 0 ] && [ $# = 6 ]; then
+112	          echo "Generating the global elf file SBSFU and userApp"
+113	          echo "Generating the global elf file SBSFU and userApp" >> $projectdir"/output.txt"
+114	          uname | grep -i -e windows -e mingw > /dev/null 2>&1
+115	          if [ $? -eq 0 ]; then
+116	            # Set to the default installation path of the Cube Programmer tool
+117	            # If you installed it in another location, please update PATH.
+118	            PATH="C:\\Program Files (x86)\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin":$PATH > /dev/null 2>&1
+119	            programmertool="STM32_Programmer_CLI­.exe"
+120	          else
+121	            which STM32_Programmer_CLI­ > /dev/null
+122	            if [ $? = 0 ]; then
+123	              programmertool="STM32_Programmer_CLI­"
+124	            else
+125	              echo "fix access path to STM32_Programmer_CLI­"
+126	            fi
+127	          fi
+128	          command=$programmertool" -ms "$elf" "$headerbin" "$sbsfuelf
+129	          $command >> $projectdir"/output.txt"
+130	          ret=$?
+131	        fi
+132	      fi
+133	    fi
+134	  fi
+135	fi
+136
+137
+138	if [ $ret -eq 0 ]; then
+139	  rm $sign
+140	  rm $sfu
+141	  rm $headerbin
+142	  if [ -e "$ref_userapp" ]; then
+143	    rm $partialbin
+144	    rm $partialsfu
+145	    rm $partialsign
+146	    rm $partialoffset
+147	  fi
+148	  exit 0
+149	else
+150	  echo "$command : failed" >> $projectdir"/output.txt"
+151	  if [ -e  "$elf" ]; then
+152	    rm  $elf
+153	  fi
+154	  if [ -e "$elfbackup" ]; then
+155	    rm  $elfbackup
+156	  fi
+157	  echo $command : failed
+158	  read -n 1 -s
+159	  exit 1
+160	fi
+161
+
+
+Applications\2_Images\2_Images_SECoreBin\STM32CubeIDE\SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh
+1	#!/bin/bash -
+2	#Post build for SECBOOT_ECCDSA_WITH_­AES128_CBC_SHA256
+3	# arg1 is the build directory
+4	# arg2 is the elf file path+name
+5	# arg3 is the bin file path+name
+6	# arg4 is the firmware Id (1/2/3)
+7	# arg5 is the version
+8	# arg6 when present forces "bigelf" generation
+9	projectdir=$1
+10	FileName=${3##*/}
+11	execname=${FileName%.*}
+12	elf=$2
+13	bin=$3
+14	fwid=$4
+15	version=$5
+16
+17	SecureEngine=${0%/*}
+18
+19	userAppBinary=$projectdir"/../Binary"
+20
+21	sfu=$userAppBinary"/"$execname".sfu"
+22	sfb=$userAppBinary"/"$execname".sfb"
+23	sign=$userAppBinary"/"$execname".sign"
+24	headerbin=$userAppBinary"/"$execname"sfuh.bin"
+25	bigbinary=$userAppBinary"/SBSFU_"$execname".bin"
+26
+27	iv=$SecureEngine"/../Binary/iv.bin"
+28	magic="SFU"$fwid
+29	oemkey=$SecureEngine"/../Binary/OEM_KEY_COMPANY"$fwid"_key_AES_CBC.bin"
+30	ecckey=$SecureEngine"/../Binary/ECCKEY"$fwid".txt"
+31	partialbin=$userAppBinary"/Partial"$execname".bin"
+32	partialsfb=$userAppBinary"/Partial"$execname".sfb"
+33	partialsfu=$userAppBinary"/Partial"$execname".sfu"
+34	partialsign=$userAppBinary"/Partial"$execname".sign"
+35	partialoffset=$userAppBinary"/Partial"$execname".offset"
+36	ref_userapp=$projectdir"/RefUserApp.bin"
+37	offset=512
+38	alignment=16
+39
+40	current_directory=`pwd`
+41	cd "$SecureEngine/../../"
+42	SecureDir=`pwd`
+43	cd "$current_directory"
+44	sbsfuelf="$SecureDir/2_Images_SBSFU/STM32CubeIDE/Debug/SBSFU.elf"
+45
+46	current_directory=`pwd`
+47	cd "$1/../../../../../../Middlewares/ST/STM32_Secure_Engine/Utilities/KeysAndImages"
+48	basedir=`pwd`
+49	cd "$current_directory"
+50	# test if window executable usable
+51	prepareimage=$basedir"/win/prepareimage/prepareimage.exe"
+52	uname | grep -i -e windows -e mingw > /dev/null 2>&1
+53
+54	if [ $? -eq 0 ] && [   -e "$prepareimage" ]; then
+55	  echo "prepareimage with windows executable"
+56	  PATH=$basedir"\\win\\prepareimage":$PATH > /dev/null 2>&1
+57	  cmd=""
+58	  prepareimage="prepareimage.exe"
+59	else
+60	  # line for python
+61	  echo "prepareimage with python script"
+62	  prepareimage=$basedir/prepareimage.py
+63	  cmd="python"
+64	fi
+65
+66	echo "$cmd $prepareimage" >> $1/output.txt
+67	# Make sure we have a Binary sub-folder in UserApp folder
+68	if [ ! -e $userAppBinary ]; then
+69	mkdir $userAppBinary
+70	fi
+71
+72
+73	command=$cmd" "$prepareimage" enc -k "$oemkey" -i "$iv" "$bin" "$sfu
+74	$command > "$projectdir"/output.txt
+75	ret=$?
+76	if [ $ret -eq 0 ]; then
+77	  command=$cmd" "$prepareimage" sha256 "$bin" "$sign
+78	  $command >> $projectdir"/output.txt"
+79	  ret=$?
+80	  if [ $ret -eq 0 ]; then
+81	    command=$cmd" "$prepareimage" pack -m "$magic" -k "$ecckey" -r 28 -v "$version" -i "$iv" -f "$sfu" -t "$sign" "$sfb" -o "$offset
+82	    $command >> $projectdir"/output.txt"
+83	    ret=$?
+84	    if [ $ret -eq 0 ]; then
+85	      command=$cmd" "$prepareimage" header -m "$magic" -k  "$ecckey" -r 28 -v "$version"  -i "$iv" -f "$sfu" -t "$sign" -o "$offset" "$headerbin
+86	      $command >> $projectdir"/output.txt"
+87	      ret=$?
+88	      if [ $ret -eq 0 ]; then
+89	        command=$cmd" "$prepareimage" merge -v 0 -e 1 -i "$headerbin" -s "$sbsfuelf" -u "$elf" "$bigbinary
+90	        $command >> $projectdir"/output.txt"
+91	        ret=$?
+92	        #Partial image generation if reference userapp exists
+93	        if [ $ret -eq 0 ] && [ -e "$ref_userapp" ]; then
+94	          echo "Generating the partial image .sfb"
+95	          echo "Generating the partial image .sfb" >> $projectdir"/output.txt"
+96	          command=$cmd" "$prepareimage" diff -1 "$ref_userapp" -2 "$bin" "$partialbin" -a "$alignment" --poffset "$partialoffset
+97	          $command >> $projectdir"/output.txt"
+98	          ret=$?
+99	          if [ $ret -eq 0 ]; then
+100	            command=$cmd" "$prepareimage" enc -k "$oemkey" -i "$iv" "$partialbin" "$partialsfu
+101	            $command >> $projectdir"/output.txt"
+102	            ret=$?
+103	            if [ $ret -eq 0 ]; then
+104	              command=$cmd" "$prepareimage" sha256 "$partialbin" "$partialsign
+105	              $command >> $projectdir"/output.txt"
+106	              ret=$?
+107	              if [ $ret -eq 0 ]; then
+108	                command=$cmd" "$prepareimage" pack -m "$magic" -k "$ecckey" -r 28 -v "$version" -i "$iv" -f "$sfu" -t "$sign" -o "$offset" --pfw "$partialsfu" --ptag "$partialsign" --poffset  "$partialoffset" "$partialsfb
+109	                $command >> $projectdir"/output.txt"
+110	                ret=$?
+111	              fi
+112	            fi
+113	          fi
+114	        fi
+115	        if [ $ret -eq 0 ] && [ $# = 6 ]; then
+116	          echo "Generating the global elf file SBSFU and userApp"
+117	          echo "Generating the global elf file SBSFU and userApp" >> $projectdir"/output.txt"
+118	          uname | grep -i -e windows -e mingw > /dev/null 2>&1
+119	          if [ $? -eq 0 ]; then
+120	            # Set to the default installation path of the Cube Programmer tool
+121	            # If you installed it in another location, please update PATH.
+122	            PATH="C:\\Program Files (x86)\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin":$PATH > /dev/null 2>&1
+123	            programmertool="STM32_Programmer_CLI­.exe"
+124	          else
+125	            which STM32_Programmer_CLI­ > /dev/null
+126	            if [ $? = 0 ]; then
+127	              programmertool="STM32_Programmer_CLI­"
+128	            else
+129	              echo "fix access path to STM32_Programmer_CLI­"
+130	            fi
+131	          fi
+132	          command=$programmertool" -ms "$elf" "$headerbin" "$sbsfuelf
+133	          $command >> $projectdir"/output.txt"
+134	          ret=$?
+135	        fi
+136	      fi
+137	    fi
+138	  fi
+139	fi
+140
+141	if [ $ret -eq 0 ]; then
+142	  rm $sign
+143	  rm $sfu
+144	  rm $headerbin
+145	  if [ -e "$ref_userapp" ]; then
+146	    rm $partialbin
+147	    rm $partialsfu
+148	    rm $partialsign
+149	    rm $partialoffset
+150	  fi
+151	  exit 0
+152	else
+153	  echo "$command : failed" >> $projectdir"/output.txt"
+154	  if [ -e  "$elf" ]; then
+155	    rm  $elf
+156	  fi
+157	  if [ -e "$elfbackup" ]; then
+158	    rm  $elfbackup
+159	  fi
+160	  echo $command : failed
+161	  read -n 1 -s
+162	  exit 1
+163	fi
+164
+
+
+Applications\2_Images\2_Images_SECoreBin\STM32CubeIDE\SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh
+1	#!/bin/bash -
+2	#Post build for SECBOOT_ECCDSA_WITHO­UT_ENCRYPT_SHA256
+3	# arg1 is the build directory
+4	# arg2 is the elf file path+name
+5	# arg3 is the bin file path+name
+6	# arg4 is the firmware Id (1/2/3)
+7	# arg5 is the version
+8	# arg6 when present forces "bigelf" generation
+9	projectdir=$1
+10	FileName=${3##*/}
+11	execname=${FileName%.*}
+12	elf=$2
+13	bin=$3
+14	fwid=$4
+15	version=$5
+16
+17	SecureEngine=${0%/*}
+18
+19	userAppBinary=$projectdir"/../Binary"
+20
+21	sfb=$userAppBinary"/"$execname".sfb"
+22	sign=$userAppBinary"/"$execname".sign"
+23	headerbin=$userAppBinary"/"$execname"sfuh.bin"
+24	bigbinary=$userAppBinary"/SBSFU_"$execname".bin"
+25	magic="SFU"$fwid
+26	ecckey=$SecureEngine"/../Binary/ECCKEY"$fwid".txt"
+27	partialbin=$userAppBinary"/Partial"$execname".bin"
+28	partialsfb=$userAppBinary"/Partial"$execname".sfb"
+29	partialsign=$userAppBinary"/Partial"$execname".sign"
+30	partialoffset=$userAppBinary"/Partial"$execname".offset"
+31	ref_userapp=$projectdir"/RefUserApp.bin"
+32	offset=512
+33	alignment=16
+34
+35	current_directory=`pwd`
+36	cd "$SecureEngine/../../"
+37	SecureDir=`pwd`
+38	cd "$current_directory"
+39	sbsfuelf="$SecureDir/2_Images_SBSFU/STM32CubeIDE/Debug/SBSFU.elf"
+40
+41	current_directory=`pwd`
+42	cd "$1/../../../../../../Middlewares/ST/STM32_Secure_Engine/Utilities/KeysAndImages"
+43	basedir=`pwd`
+44	cd "$current_directory"
+45	# test if window executable usable
+46	prepareimage=$basedir"/win/prepareimage/prepareimage.exe"
+47	uname  | grep -i -e windows -e mingw > /dev/null 2>&1
+48	if [ $? -eq 0 ] && [  -e "$prepareimage" ]; then
+49	  echo "prepareimage with windows executable"
+50	  PATH=$basedir"\\win\\prepareimage":$PATH > /dev/null 2>&1
+51	  cmd=""
+52	  prepareimage="prepareimage.exe"
+53	else
+54	  # line for python
+55	  echo "prepareimage with python script"
+56	  prepareimage=$basedir/prepareimage.py
+57	  cmd="python"
+58	fi
+59
+60	echo "$cmd $prepareimage" >> $1/output.txt
+61	# Make sure we have a Binary sub-folder in UserApp folder
+62	if [ ! -e $userAppBinary ]; then
+63	mkdir $userAppBinary
+64	fi
+65
+66
+67
+68	command=$cmd" "$prepareimage" sha256 "$bin" "$sign
+69	$command >> $projectdir"/output.txt"
+70	ret=$?
+71	if [ $ret -eq 0 ]; then
+72	  command=$cmd" "$prepareimage" pack -m "$magic" -k "$ecckey" -p 1 -r 44 -v "$version" -f "$bin" -t "$sign" "$sfb" -o "$offset
+73	  $command >> $projectdir"/output.txt"
+74	  ret=$?
+75	  if [ $ret -eq 0 ]; then
+76	    command=$cmd" "$prepareimage" header -m "$magic" -k  "$ecckey"  -p 1 -r 44 -v "$version"  -f "$bin" -t "$sign" -o "$offset" "$headerbin
+77	    $command >> $projectdir"/output.txt"
+78	    ret=$?
+79	    if [ $ret -eq 0 ]; then
+80	      command=$cmd" "$prepareimage" merge -v 0 -e 1 -i "$headerbin" -s "$sbsfuelf" -u "$elf" "$bigbinary
+81	      $command >> $projectdir"/output.txt"
+82	      ret=$?
+83	      #Partial image generation if reference userapp exists
+84	      if [ $ret -eq 0 ] && [ -e "$ref_userapp" ]; then
+85	        echo "Generating the partial image .sfb"
+86	        echo "Generating the partial image .sfb" >> $projectdir"/output.txt"
+87	        command=$cmd" "$prepareimage" diff -1 "$ref_userapp" -2 "$bin" "$partialbin" -a "$alignment" --poffset "$partialoffset
+88	        $command >> $projectdir"/output.txt"
+89	        ret=$?
+90	        if [ $ret -eq 0 ]; then
+91	          command=$cmd" "$prepareimage" sha256 "$partialbin" "$partialsign
+92	          $command >> $projectdir"/output.txt"
+93	          ret=$?
+94	          if [ $ret -eq 0 ]; then
+95	            command=$cmd" "$prepareimage" pack -m "$magic" -k "$ecckey" -p 1 -r 44 -v "$version" -f "$bin" -t "$sign" -o "$offset" --pfw "$partialbin" --ptag "$partialsign" --poffset  "$partialoffset" "$partialsfb
+96	            $command >> $projectdir"/output.txt"
+97	            ret=$?
+98	          fi
+99	        fi
+100	      fi
+101	      if [ $ret -eq 0 ] && [ $# = 6 ]; then
+102	        echo "Generating the global elf file (SBSFU and userApp)"
+103	        echo "Generating the global elf file (SBSFU and userApp)" >> $projectdir"/output.txt"
+104	        uname | grep -i -e windows -e mingw > /dev/null 2>&1
+105	        if [ $? -eq 0 ]; then
+106	          # Set to the default installation path of the Cube Programmer tool
+107	          # If you installed it in another location, please update PATH.
+108	          PATH="C:\\Program Files (x86)\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin":$PATH > /dev/null 2>&1
+109	          programmertool="STM32_Programmer_CLI­.exe"
+110	        else
+111	          which STM32_Programmer_CLI­ > /dev/null
+112	          if [ $? = 0 ]; then
+113	            programmertool="STM32_Programmer_CLI­"
+114	          else
+115	            echo "fix access path to STM32_Programmer_CLI­"
+116	          fi
+117	        fi
+118	        command=$programmertool" -ms "$elf" "$headerbin" "$sbsfuelf
+119	        $command >> $projectdir"/output.txt"
+120	        ret=$?
+121	      fi
+122	    fi
+123	  fi
+124	fi
+125
+126	if [ $ret -eq 0 ]; then
+127	  rm $sign
+128	  rm $headerbin
+129	  if [ -e "$ref_userapp" ]; then
+130	    rm $partialbin
+131	    rm $partialsign
+132	    rm $partialoffset
+133	  fi
+134	  exit 0
+135	else
+136	  echo "$command : failed" >> $projectdir"/output.txt"
+137	  if [ -e  "$elf" ]; then
+138	    rm  $elf
+139	  fi
+140	  if [ -e "$elfbackup" ]; then
+141	    rm  $elfbackup
+142	  fi
+143	  echo $command : failed
+144	  read -n 1 -s
+145	  exit 1
+146	fi
+147
+
+
+Applications\2_Images\2_Images_SBSFU\STM32CubeIDE\postbuild.sh
+1	#!/bin/bash -
+2	echo "Extract SE interface symbols"
+3	arm-none-eabi-nm $1 > nm.txt
+4	case "$(uname -s)" in
+5	    Linux*|Darwin*)
+6	      tr -d '\015' <../se_interface.txt >../se_interface_unix.txt
+7	      grep -F -f ../se_interface_unix.txt nm.txt > symbol.list
+8	      rm ../se_interface_unix.txt
+9	      ;;
+10	    *)
+11	      grep -F -f ../se_interface.txt nm.txt > symbol.list
+12	      ;;
+13	esac
+14	wc -l symbol.list
+15	cat symbol.list | awk '{split($0,a,/[ \r]/); print a[3]" = 0x"a[1]";"}' > se_interface_app.ld
+16	rm nm.txt
+17	rm symbol.list
+18

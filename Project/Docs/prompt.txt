@@ -1,0 +1,132 @@
+Deep Research Request for STM32 SBSFU Project
+
+Introduction:
+
+I am seeking deep research assistance for my project, focusing on the STM32 Secure Boot and Secure Firmware Update (SBSFU) scripts. My objective is to enhance the existing functionalities and implement new features within this framework. I previously encountered limitations with the current Gemini assistant in Visual Studio Code, including message truncation and lengthy processing times, which necessitates a more powerful analysis module.
+
+Provided Files and Their Significance:
+
+To facilitate a comprehensive understanding of my project, I am providing the following sets of files. These files offer insights into both the original STM32 SBSFU examples and my current project modifications:
+
+    Original STM SBSFU File Tree and Scripts (originial STM SBSFU filetree and Scripts.txt):
+
+
+This document outlines the standard file structure and key scripts from the untouched STM32 Nucleo-L476RG SBSFU example. It serves as the baseline for understanding the original design and functionality. It details the organization of the
+
+Core and SBSFU modules, including application logic (App) and hardware-specific interfaces (Target), along with critical build scripts.
+
+My Boot (SBSFU) Project Tree (L476_SBSFU Project tree.txt):
+
+
+This file describes the directory structure of my current Secure Bootloader (SBSFU) project. It is derived directly from the original STM SBSFU example but reflects my workspace's specific organization and any top-level additions. This helps in understanding the context of the bootloader's implementation.
+
+My Application Project Tree (L476_USER_APP Project tree.txt):
+
+
+This document maps out the file structure of my user application project. It showcases how the application code is organized, including its core functionalities, and notably highlights the
+
+Common/KeysAndImages_Util directory where Python scripts for image preparation reside.
+
+My Application Project Code (L476_USER_APP Code.txt):
+
+
+This comprehensive file contains the source code for my user application. It includes C header and source files (
+
+main.h/.c, com.h/.c, flash_if.h/.c, fw_update_app.h/.c, se_user_code.h/.c, sfu_app_new_image.h/.c, stm32l4xx_hal_conf.h, stm32l4xx_it.h/.c, test_protections.h/.c, ymodem.h/.c), Python scripts for cryptographic operations (keys.py, prepareimage.py, translate_key.py), and linker scripts (STM32L476RGTx.ld, mapping_export.h, mapping_fwimg.ld, mapping_sbsfu.ld).
+
+My Boot (SBSFU) Project Code (L476_SBSFU Code.txt):
+
+
+This file provides the source code for my Secure Bootloader project. It includes C header and source files for the BFU application logic and low-level drivers, along with linker scripts specific to the SBSFU. This file also contains the template scripts for different cryptographic schemes.
+
+Focus of the Research:
+
+The primary focus of this research is on the interaction and implementation details within the build process, particularly concerning cryptographic operations and debugging.
+
+The
+
+prebuild.sh script (located in SECoreBin/Scripts) plays a crucial role by selecting the appropriate cryptographic scheme (e.g., SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM, SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256, SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256) based on project configuration. This chosen scheme's corresponding script is then copied to
+
+Common/Scripts/postbuild.sh (or linked, depending on the environment). This
+
+postbuild.sh script is responsible for critical post-compilation tasks such as firmware encryption, signing, packaging (creating .sfb files), and merging the user application with the SBSFU binary.
+
+I have already initiated improvements to these scripts and am looking for advanced assistance to further refine and expand their capabilities.
+
+Specific Deep Research Task: Enhanced Debugging Functions for Post-Build Scripts
+
+I require the implementation of a robust and configurable debugging mechanism directly within the post-build script templates.
+
+Detailed Request:
+
+    Implementation of Debugging Functions:
+
+        Introduce three distinct logging functions within the shell script templates (
+
+        SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh, SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh, SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh):
+
+        debug_log(message): For granular, detailed debugging information that is often voluminous.
+
+        info_log(message): For important informational messages about the script's progress or state (equivalent to the current verbose_msg).
+
+        error_log(message): For critical error messages indicating failures or unexpected behavior.
+
+Flexible Output Redirection:
+
+    Each of these logging functions should support three output destinations:
+
+        Screen Only: Messages are printed directly to the standard output (console).
+
+        File Only: Messages are appended to a designated log file (e.g., output.txt within the project's output directory, which is currently $PROJECT_DIR_ABS/output.txt or $1/output.txt in the current scripts ).
+
+        Both (Screen and File): Messages are printed to both the console and appended to the log file.
+
+Centralized Configuration Parameter:
+
+    The desired output behavior (Screen, File, or Both) for all three logging functions (debug_log, info_log, error_log) must be controlled by a single command-line parameter passed to the postbuild.sh script. This parameter will interpret the following integer values:
+
+        0: Suppress all logging output (no messages to screen or file).
+
+        1: Output all messages to Screen Only.
+
+        2: Output all messages to File Only.
+
+        3: Output all messages to Both Screen and File.
+
+    This new parameter will be added as an argument to the post-build script execution command within the .cproject files (e.g., L476_USER_APP/UserApp/.cproject).
+
+Integration into Script Templates:
+
+    Thoroughly integrate these new functions and their parameter-driven logic into the
+
+    SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh, SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh, and SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh script templates.
+
+Ensure that when the prebuild script copies the chosen template, the postbuild.sh accurately reflects this new debugging capability.
+
+Replace existing
+
+log_msg and verbose_msg calls with the new debug_log and info_log functions as appropriate, maintaining or enhancing the current level of detail.
+
+Comprehensive Original Functionality Verification:
+
+    After implementing the new debugging features, conduct a detailed and rigorous verification to confirm that the original core functionalities of each of the three cryptographic scheme scripts (SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh, SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh, SECBOOT_ECCDSA_WITHOUT_ENCRYPT_SHA256.sh) remain fully preserved. This includes:
+
+    Encryption (if applicable): Verify that the firmware is correctly encrypted.
+
+    Signing: Confirm that the firmware (or encrypted firmware) is signed as expected, producing valid .sign files.
+
+    SFB Packaging: Ensure the .sfb files are generated accurately, containing correct headers and the processed firmware.
+
+    Header Binary Creation: Confirm that the separate header binary (sfuh.bin) is created correctly.
+
+    Big Binary Merging: Validate that the final merged binary (SBSFU + user app + header) is correctly assembled.
+
+    Partial Image Generation: If a RefUserApp.bin exists, confirm that the partial firmware update (.bin, .sfu, .sign, .sfb, .offset) generation process remains functional and accurate.
+
+Merged ELF Generation (Optional): If the FORCE_BIGELF argument is present, verify that the STM32_Programmer_CLI command is correctly executed to create the merged ELF file.
+
+        Explicitly state any potential side effects or areas of attention introduced by the new debugging infrastructure, even if seemingly minor.
+
+Output Preference:
+
+Please prioritize providing the well-structured and detailed shell script code for the modified templates. The explanations for the code, the rationale behind design choices, and the description of covered issues should be concise and to the point.
