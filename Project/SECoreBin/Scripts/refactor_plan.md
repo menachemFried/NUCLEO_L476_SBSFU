@@ -6,7 +6,7 @@ This file tracks the step-by-step plan to refactor the secure packaging script.
 - [x] Convert script to `#!/bin/sh` and add `set -e`, `set -u`. (Done)
 - [x] Add a standard `main()` function structure. (Done)
 - [x] Add unified logging functions (`info_log`, `debug_log`, `error_log`). (Done)
-- [ ] Add a `usage` function for clear parameter documentation.
+- [x] Add a `usage` function for clear parameter documentation. (Done)
 
 ### 2. Argument & Path Handling
 - [ ] Define and implement the new, clear parameter list.

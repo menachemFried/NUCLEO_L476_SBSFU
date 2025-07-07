@@ -219,6 +219,18 @@ LOG_ERROR_FILE=""
 
 # --- Function Definitions ---
 
+usage() {
+    echo "Usage: $0 <UserApp Build Dir> <UserApp ELF> <UserApp BIN> <FW ID> <FW Version> <Common Dir> [Log-I] [Log-D] [Log-E] [ForceBigELF]"
+    echo "  - UserApp Build Dir:  Path to the UserApp build directory (e.g., 'Debug')."
+    echo "  - UserApp ELF File:   Path to the UserApp ELF file."
+    echo "  - UserApp BIN File:   Path to the UserApp BIN file (the firmware to package)."
+    echo "  - FW ID:              The firmware slot identifier (e.g., 1, 2, or 3)."
+    echo "  - FW Version:         The version number for the firmware header."
+    echo "  - Common Dir:         Path to the shared 'Common' directory."
+    echo "  - Log Modes (Opt):    1=Console, 2=File, 3=Both. Defaults to 1."
+    echo "  - ForceBigELF (Opt):  Any value to force generation of merged ELF."
+}
+
 _log() {
     line_num="$1"
     log_type="$2"
@@ -244,7 +256,10 @@ error_exit() {
 }
 
 main() {
-    # To be implemented
+    if [ "$#" -lt 6 ]; then
+        usage
+        error_exit "$LINENO" "Missing mandatory arguments."
+    fi
     info_log "$LINENO" "Main function started."
 }
 
