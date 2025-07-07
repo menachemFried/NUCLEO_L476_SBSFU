@@ -26,18 +26,18 @@
 #A# bin=$3
 #A# fwid=$4
 #A# version=$5
-#A# 
+#A#
 #A# SecureEngine=${0%/*}
-#A# 
+#A#
 #A# userAppBinary=$projectdir"/../Binary"
-#A# 
+#A#
 #A# sfu=$userAppBinary"/"$execname".sfu"
 #A# sfb=$userAppBinary"/"$execname".sfb"
 #A# sign=$userAppBinary"/"%execname".sign"
 #A# headerbin=$userAppBinary"/"$execname"sfuh.bin"
 #A# bigbinary=$userAppBinary"/SBSFU_"$execname".bin"
 #A# elfbackup=$userAppBinary"/SBSFU_"$execname".elf"
-#A#  
+#A#
 #A# nonce=$SecureEngine"/../Binary/nonce.bin"
 #A# magic="SFU"$fwid
 #A# oemkey=$SecureEngine"/../Binary/OEM_KEY_COMPANY"$fwid"_key_AES_GCM.bin"
@@ -53,7 +53,7 @@
 # ==============================================================================
 # Part B: Complex Path Calculation
 # ==============================================================================
-#B# 
+#B#
 #B# current_directory=`pwd`
 #B# cd "$SecureEngine/../../"
 #B# SecureDir=`pwd`
@@ -85,7 +85,7 @@
 # ==============================================================================
 # Part D: Create Output Directory
 # ==============================================================================
-#D# 
+#D#
 #D# # Make sure we have a Binary sub-folder in UserApp folder
 #D# if [ ! -e $userAppBinary ]; then
 #D# mkdir $userAppBinary
@@ -94,7 +94,7 @@
 # ==============================================================================
 # Part E.1: Main Packaging - Encrypt
 # ==============================================================================
-#E.1# 
+#E.1#
 #E.1# command=$cmd" "$prepareimage" enc -k "$oemkey" -n "$nonce" "$bin" "$sfu
 #E.1# $command > $projectdir"/output.txt"
 #E.1# ret=$?
@@ -110,7 +110,7 @@
 # ==============================================================================
 # Part E.3: Main Packaging - Pack
 # ==============================================================================
-#E.3#   if [ $ret -eq 0 ]; then 
+#E.3#   if [ $ret -eq 0 ]; then
 #E.3#     command=$cmd" "$prepareimage" pack -m "$magic" -k "$oemkey"  -r 112 -v "$version" -n "$nonce" -f "$sfu" -t "$sign" "$sfb" -o "$offset
 #E.3#     $command >> $projectdir"/output.txt"
 #E.3#     ret=$?
@@ -220,13 +220,12 @@ LOG_ERROR_FILE=""
 # --- Function Definitions ---
 
 usage() {
-    echo "Usage: $0 <UserApp Build Dir> <UserApp ELF> <UserApp BIN> <FW ID> <FW Version> <Common Dir> [Log-I] [Log-D] [Log-E] [ForceBigELF]"
+    echo "Usage: $0 <UserApp Build Dir> <UserApp ELF> <UserApp BIN> <FW ID> <FW Version> [Log-I] [Log-D] [Log-E] [ForceBigELF]"
     echo "  - UserApp Build Dir:  Path to the UserApp build directory (e.g., 'Debug')."
     echo "  - UserApp ELF File:   Path to the UserApp ELF file."
     echo "  - UserApp BIN File:   Path to the UserApp BIN file (the firmware to package)."
     echo "  - FW ID:              The firmware slot identifier (e.g., 1, 2, or 3)."
     echo "  - FW Version:         The version number for the firmware header."
-    echo "  - Common Dir:         Path to the shared 'Common' directory."
     echo "  - Log Modes (Opt):    1=Console, 2=File, 3=Both. Defaults to 1."
     echo "  - ForceBigELF (Opt):  Any value to force generation of merged ELF."
 }
@@ -237,7 +236,7 @@ _log() {
     message="$3"
     log_mode="$4"
     log_file="$5"
-    
+
     formatted_message="[LINE $line_num - $log_type] $message"
     case "$log_mode" in
         1) echo "$formatted_message";;
@@ -256,11 +255,101 @@ error_exit() {
 }
 
 main() {
-    if [ "$#" -lt 6 ]; then
+    # --- 1. Argument Parsing ---
+    if [ "$#" -lt 8 ]; then
         usage
         error_exit "$LINENO" "Missing mandatory arguments."
     fi
-    info_log "$LINENO" "Main function started."
+
+    USERAPP_BUILD_DIR_REL="$1"
+    USERAPP_ELF_NAME="$2"
+    USERAPP_BIN_REL="$3"
+    FW_ID="$4"
+    FW_VERSION="$5"
+    LOG_INFO_MODE=${6:-1}
+    LOG_DEBUG_MODE=${7:-1}
+    LOG_ERROR_MODE=${8:-1}
+
+    if [ "$#" -ge 9 ]; then
+    FORCE_BIGELF=1
+    else
+    FORCE_BIGELF=0
+    fi
+
+
+    FORCE_BIGELF=${9:-0}
+
+    # Resolve Middle Parameters
+    USERAPP_BIN_FILE_NAME="${3##*/}"
+    USERAPP_BIN_DIR_REL="$(dirname "$3")"
+    USERAPP_BIN_DIR_ABS="$(cd "$USERAPP_BIN_DIR_REL" && pwd)"
+
+
+    # --- 2. Path and Logging Setup ---
+
+    # Resolve absolute paths
+    SCRIPT_DIR_ABS="$(cd "$(dirname "$0")" && pwd)"
+    COMMON_DIR_ABS="$(cd "$SCRIPT_DIR_ABS/../../Common" && pwd)"
+    USERAPP_BUILD_DIR_ABS="$(cd "$USERAPP_BUILD_DIR_REL" && pwd)"
+
+    # Setup logging files in the SECoreBin Output directory
+    LOG_DIR="$USERAPP_BUILD_DIR_ABS/Output"
+    mkdir -p "$LOG_DIR"
+    LOG_INFO_FILE="$LOG_DIR/postbuild_Info.log"
+    LOG_DEBUG_FILE="$LOG_DIR/postbuild_Debug.log"
+    LOG_ERROR_FILE="$LOG_DIR/postbuild_Error.log"
+
+    : > "$LOG_INFO_FILE"
+    : > "$LOG_DEBUG_FILE"
+    : > "$LOG_ERROR_FILE"
+
+    info_log "$LINENO" "Post-build for secure firmware started."
+    debug_log "$LINENO" "--- Input Parameters ---"
+    debug_log "$LINENO" "UserApp Build Dir (Rel): $USERAPP_BUILD_DIR_REL"
+    debug_log "$LINENO" "UserApp ELF Name:        $USERAPP_ELF_NAME"
+    debug_log "$LINENO" "UserApp BIN (Rel):       $USERAPP_BIN_REL"
+    debug_log "$LINENO" "Firmware ID:             $FW_ID"
+    debug_log "$LINENO" "Firmware Version:        $FW_VERSION"
+    debug_log "$LINENO" "Log Info:                $LOG_INFO_MODE"
+    debug_log "$LINENO" "Log Debug:               $LOG_DEBUG_MODE"
+    debug_log "$LINENO" "Log Error:               $LOG_ERROR_MODE"
+
+    if [ "$#" -ge 9 ]; then
+        debug_log "$LINENO" "Arg 9 detected: 'force_bigelf' is enabled."
+        debug_log "$LINENO" "Force BigELF:            $FORCE_BIGELF"
+    fi
+
+    debug_log "$LINENO" "--- MIDDLE Parameters ---"
+    debug_log "$LINENO" "UserApp BIN Name:        $USERAPP_BIN_FILE_NAME"
+    debug_log "$LINENO" "UserApp BIN Dir (Rel):   $USERAPP_BIN_DIR_REL"
+    debug_log "$LINENO" "--- Resolved Paths ---"
+    debug_log "$LINENO" "Script Dir (Abs):        $SCRIPT_DIR_ABS"
+    debug_log "$LINENO" "Common Dir (Abs):        $COMMON_DIR_ABS"
+    debug_log "$LINENO" "UserApp Build Dir (Abs): $USERAPP_BUILD_DIR_ABS"
+    debug_log "$LINENO" "Log Directory:           $LOG_DIR"
+
+
+
+
+    # --- 3. Define and Validate All Paths ---
+
+    # Auto-detect build mode from the current directory's name
+    BUILD_MODE=$(basename "$(pwd)")
+    debug_log "$LINENO" "Build mode detected: $BUILD_MODE"
+
+    KEYS_AND_IMAGES_DIR_ABS="$COMMON_DIR_ABS/KeysAndImages_Util"
+    BINARY_KEYS_DIR_ABS="$COMMON_DIR_ABS/Binary_Keys"
+
+    USERAPP_BIN_FILE_ABS="$(cd "$USERAPP_BIN_DIR_REL" && pwd)/$USERAPP_BIN_FILE_NAME"
+    USERAPP_ELF_FILE_ABS="$USERAPP_BUILD_DIR_ABS/$USERAPP_ELF_NAME"
+    SBSFU_ELF_FILE_ABS="$COMMON_DIR_ABS/$BUILD_MODE/SBSFU.elf"
+
+    debug_log "$LINENO" "--- Full File Paths ---"
+    debug_log "$LINENO" "UserApp BIN:       $USERAPP_BIN_FILE_ABS"
+    debug_log "$LINENO" "UserApp ELF:       $USERAPP_ELF_FILE_ABS"
+    debug_log "$LINENO" "SBSFU ELF:         $SBSFU_ELF_FILE_ABS"
+
+    # --- To be continued... ---
 }
 
 main "$@"
