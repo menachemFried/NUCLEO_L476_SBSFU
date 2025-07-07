@@ -292,7 +292,7 @@ main() {
     COMMON_DIR_ABS="$(cd "$SCRIPT_DIR_ABS/../../Common" && pwd)"
     USERAPP_BUILD_DIR_ABS="$(cd "$USERAPP_BUILD_DIR_REL" && pwd)"
 
-    # Setup logging files in the SECoreBin Output directory
+    # Setup logging files
     LOG_DIR="$USERAPP_BUILD_DIR_ABS/Output"
     mkdir -p "$LOG_DIR"
     LOG_INFO_FILE="$LOG_DIR/postbuild_Info.log"
@@ -305,51 +305,93 @@ main() {
 
     info_log "$LINENO" "Post-build for secure firmware started."
     debug_log "$LINENO" "--- Input Parameters ---"
-    debug_log "$LINENO" "UserApp Build Dir (Rel): $USERAPP_BUILD_DIR_REL"
-    debug_log "$LINENO" "UserApp ELF Name:        $USERAPP_ELF_NAME"
-    debug_log "$LINENO" "UserApp BIN (Rel):       $USERAPP_BIN_REL"
-    debug_log "$LINENO" "Firmware ID:             $FW_ID"
-    debug_log "$LINENO" "Firmware Version:        $FW_VERSION"
-    debug_log "$LINENO" "Log Info:                $LOG_INFO_MODE"
-    debug_log "$LINENO" "Log Debug:               $LOG_DEBUG_MODE"
-    debug_log "$LINENO" "Log Error:               $LOG_ERROR_MODE"
+    debug_log "$LINENO" "1: UserApp Build Dir (Rel): $USERAPP_BUILD_DIR_REL"
+    debug_log "$LINENO" "2: UserApp ELF Name:        $USERAPP_ELF_NAME"
+    debug_log "$LINENO" "3: UserApp BIN (Rel):       $USERAPP_BIN_REL"
+    debug_log "$LINENO" "4: Firmware ID:             $FW_ID"
+    debug_log "$LINENO" "5: Firmware Version:        $FW_VERSION"
+    debug_log "$LINENO" "6: Log Info Mode:           $LOG_INFO_MODE"
+    debug_log "$LINENO" "7: Log Debug Mode:          $LOG_DEBUG_MODE"
+    debug_log "$LINENO" "8: Log Error Mode:          $LOG_ERROR_MODE"
 
-    if [ "$#" -ge 9 ]; then
-        debug_log "$LINENO" "Arg 9 detected: 'force_bigelf' is enabled."
-        debug_log "$LINENO" "Force BigELF:            $FORCE_BIGELF"
+	 if [ "$#" -ge 9 ]; then
+    	debug_log "$LINENO" "9: Force BigELF:            $FORCE_BIGELF"
     fi
 
     debug_log "$LINENO" "--- MIDDLE Parameters ---"
     debug_log "$LINENO" "UserApp BIN Name:        $USERAPP_BIN_FILE_NAME"
     debug_log "$LINENO" "UserApp BIN Dir (Rel):   $USERAPP_BIN_DIR_REL"
-    debug_log "$LINENO" "--- Resolved Paths ---"
-    debug_log "$LINENO" "Script Dir (Abs):        $SCRIPT_DIR_ABS"
-    debug_log "$LINENO" "Common Dir (Abs):        $COMMON_DIR_ABS"
-    debug_log "$LINENO" "UserApp Build Dir (Abs): $USERAPP_BUILD_DIR_ABS"
-    debug_log "$LINENO" "Log Directory:           $LOG_DIR"
-
-
 
 
     # --- 3. Define and Validate All Paths ---
 
-    # Auto-detect build mode from the current directory's name
+    # Dynamically determine the build mode (e.g., 'Debug') from the build directory path
     BUILD_MODE=$(basename "$(pwd)")
-    debug_log "$LINENO" "Build mode detected: $BUILD_MODE"
 
+    # Toolchain and Keys
     KEYS_AND_IMAGES_DIR_ABS="$COMMON_DIR_ABS/KeysAndImages_Util"
     BINARY_KEYS_DIR_ABS="$COMMON_DIR_ABS/Binary_Keys"
 
+    # Input files
     USERAPP_BIN_FILE_ABS="$(cd "$USERAPP_BIN_DIR_REL" && pwd)/$USERAPP_BIN_FILE_NAME"
     USERAPP_ELF_FILE_ABS="$USERAPP_BUILD_DIR_ABS/$USERAPP_ELF_NAME"
     SBSFU_ELF_FILE_ABS="$COMMON_DIR_ABS/$BUILD_MODE/SBSFU.elf"
 
-    debug_log "$LINENO" "--- Full File Paths ---"
-    debug_log "$LINENO" "UserApp BIN:       $USERAPP_BIN_FILE_ABS"
-    debug_log "$LINENO" "UserApp ELF:       $USERAPP_ELF_FILE_ABS"
-    debug_log "$LINENO" "SBSFU ELF:         $SBSFU_ELF_FILE_ABS"
+    # Output files
+    USERAPP_BINARY_DIR_ABS="$(dirname "$USERAPP_BUILD_DIR_ABS")/Binary"
+    mkdir -p "$USERAPP_BINARY_DIR_ABS"
 
-    # --- To be continued... ---
+    EXEC_NAME=$(basename "$USERAPP_BIN_FILE_ABS" .bin)
+    SFU_FILE_ABS="$USERAPP_BINARY_DIR_ABS/${EXEC_NAME}.sfu"
+    SFB_FILE_ABS="$USERAPP_BINARY_DIR_ABS/${EXEC_NAME}.sfb"
+    SIGN_FILE_ABS="$USERAPP_BINARY_DIR_ABS/${EXEC_NAME}.sign"
+    HEADER_BIN_ABS="$USERAPP_BINARY_DIR_ABS/${EXEC_NAME}sfuh.bin"
+    BIGBINARY_ABS="$USERAPP_BINARY_DIR_ABS/SBSFU_${EXEC_NAME}.bin"
+
+    # Keys and constants
+    NONCE_FILE_ABS="$BINARY_KEYS_DIR_ABS/nonce.bin"
+    OEM_KEY_ABS="$BINARY_KEYS_DIR_ABS/OEM_KEY_COMPANY${FW_ID}_key_AES_GCM.bin"
+    MAGIC="SFU${FW_ID}"
+    OFFSET=512
+    ALIGNMENT=16
+
+    # Partial update files (optional)
+    REF_USER_APP_ABS="$USERAPP_BUILD_DIR_ABS/RefUserApp.bin"
+    PARTIAL_BIN_ABS="$USERAPP_BINARY_DIR_ABS/Partial${EXEC_NAME}.bin"
+    PARTIAL_SFU_ABS="$USERAPP_BINARY_DIR_ABS/Partial${EXEC_NAME}.sfu"
+    PARTIAL_SIGN_ABS="$USERAPP_BINARY_DIR_ABS/Partial${EXEC_NAME}.sign"
+    PARTIAL_SFB_ABS="$USERAPP_BINARY_DIR_ABS/Partial${EXEC_NAME}.sfb"
+    PARTIAL_OFFSET_ABS="$USERAPP_BINARY_DIR_ABS/Partial${EXEC_NAME}.offset"
+
+    debug_log "$LINENO" "--- Resolved Paths & Variables ---"
+    debug_log "$LINENO" "Script Dir (Abs):              $SCRIPT_DIR_ABS"
+    debug_log "$LINENO" "Common Dir (Abs):              $COMMON_DIR_ABS"
+    debug_log "$LINENO" "UserApp Build Dir (Abs):       $USERAPP_BUILD_DIR_ABS"
+    debug_log "$LINENO" "Log Directory:                 $LOG_DIR"
+    debug_log "$LINENO" "Build Mode:                    $BUILD_MODE"
+    debug_log "$LINENO" "Keys & Images Dir:             $KEYS_AND_IMAGES_DIR_ABS"
+    debug_log "$LINENO" "Binary Keys Dir:               $BINARY_KEYS_DIR_ABS"
+    debug_log "$LINENO" "UserApp BIN:                   $USERAPP_BIN_FILE_ABS"
+    debug_log "$LINENO" "UserApp ELF:                   $USERAPP_ELF_FILE_ABS"
+    debug_log "$LINENO" "SBSFU ELF:                     $SBSFU_ELF_FILE_ABS"
+    debug_log "$LINENO" "Nonce:                         $NONCE_FILE_ABS"
+    debug_log "$LINENO" "OEM Key:                       $OEM_KEY_ABS"
+    debug_log "$LINENO" "Magic:                         $MAGIC"
+    debug_log "$LINENO" "Offset:                        $OFFSET"
+    debug_log "$LINENO" "Alignment:                     $ALIGNMENT"
+    debug_log "$LINENO" "Output Dir:                    $USERAPP_BINARY_DIR_ABS"
+    debug_log "$LINENO" "Exec Name:                     $EXEC_NAME"
+    debug_log "$LINENO" "Output SFU:                    $SFU_FILE_ABS"
+    debug_log "$LINENO" "Output SFB:                    $SFB_FILE_ABS"
+    debug_log "$LINENO" "Output SIGN:                   $SIGN_FILE_ABS"
+    debug_log "$LINENO" "Output Header:                 $HEADER_BIN_ABS"
+    debug_log "$LINENO" "Output BigBinary:              $BIGBINARY_ABS"
+    debug_log "$LINENO" "Ref UserApp (Opt):             $REF_USER_APP_ABS"
+    debug_log "$LINENO" "Partial BIN:                   $PARTIAL_BIN_ABS"
+    debug_log "$LINENO" "Partial SFU:                   $PARTIAL_SFU_ABS"
+    debug_log "$LINENO" "Partial SIGN:                  $PARTIAL_SIGN_ABS"
+    debug_log "$LINENO" "Partial SFB:                   $PARTIAL_SFB_ABS"
+    debug_log "$LINENO" "Partial Offset:                $PARTIAL_OFFSET_ABS"
 }
 
 main "$@"
