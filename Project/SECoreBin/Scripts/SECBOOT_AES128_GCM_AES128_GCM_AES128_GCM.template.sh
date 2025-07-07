@@ -209,6 +209,13 @@
 set -e
 set -u
 
+main() {
+    # To be implemented
+    echo "Main function started."
+}
+
+main "$@"
+
 #!/bin/sh
 
 # --- Configuration ---
