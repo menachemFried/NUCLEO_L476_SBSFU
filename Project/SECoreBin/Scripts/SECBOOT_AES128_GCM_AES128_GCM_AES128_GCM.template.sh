@@ -209,21 +209,7 @@
 set -e
 set -u
 
-main() {
-    # To be implemented
-    echo "Main function started."
-}
-
-main "$@"
-
-#!/bin/sh
-
-# --- Configuration ---
-set -e
-set -u
-
 # --- Global Variables ---
-# To be populated later
 LOG_INFO_MODE=1
 LOG_DEBUG_MODE=1
 LOG_ERROR_MODE=1
@@ -233,32 +219,33 @@ LOG_ERROR_FILE=""
 
 # --- Function Definitions ---
 
-# Print usage information and exit
-usage() {
-    # To be implemented
-    echo "Usage: ..."
-}
-
-# Log a message to the configured output
 _log() {
-    # To be implemented
-    echo "$@"
+    line_num="$1"
+    log_type="$2"
+    message="$3"
+    log_mode="$4"
+    log_file="$5"
+    
+    formatted_message="[LINE $line_num - $log_type] $message"
+    case "$log_mode" in
+        1) echo "$formatted_message";;
+        2) echo "$formatted_message" >> "$log_file";;
+        3) echo "$formatted_message" | tee -a "$log_file";;
+    esac
 }
 
-info_log()  { _log "$1" "INFO"  "$2"; }
-debug_log() { _log "$1" "DEBUG" "$2"; }
-error_log() { _log "$1" "ERROR" "$2"; }
+info_log()  { _log "$1" "INFO"  "$2" "$LOG_INFO_MODE"  "$LOG_INFO_FILE"; }
+debug_log() { _log "$1" "DEBUG" "$2" "$LOG_DEBUG_MODE" "$LOG_DEBUG_FILE"; }
+error_log() { _log "$1" "ERROR" "$2" "$LOG_ERROR_MODE" "$LOG_ERROR_FILE"; }
 
 error_exit() {
     error_log "$1" "$2"
     exit 1
 }
 
-# --- Main Script Logic ---
 main() {
     # To be implemented
-    info_log "$LINENO" "Script starting..."
+    info_log "$LINENO" "Main function started."
 }
 
-# --- Execute Main Function ---
 main "$@"
