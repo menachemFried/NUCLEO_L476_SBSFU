@@ -1,12 +1,15 @@
-[LINE 53 - INFO] prebuild.sh started.
-[LINE 97 - INFO] Using Windows executable for prepareimage.
-[LINE 113 - INFO] Cleaning up previous build artifacts...
-[LINE 118 - INFO] Determining crypto scheme from se_crypto_config.h...
-[LINE 130 - INFO] Crypto scheme selected: SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256
-[LINE 134 - INFO] Generating assembly key file: se_key.s
-[LINE 166 - INFO] Adding OEM Key 1 from OEM_KEY_COMPANY1_key_AES_CBC.bin
-[LINE 178 - INFO] Adding ECC Public Key 1 from ECCKEY1.txt
-[LINE 185 - INFO] Assembly key file generation complete.
-[LINE 189 - INFO] Setting up post-build script...
-[LINE 199 - INFO] Copying 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Scripts/SECBOOT_ECCDSA_WITH_AES128_CBC_SHA256.sh' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts/postbuild.sh'
-[LINE 207 - INFO] Pre-build script finished successfully.
+[LINE 60 - INFO] prebuild.sh started.
+[LINE 118 - INFO] Using Windows executable for prepareimage.
+[LINE 134 - INFO] Cleaning up previous build artifacts and ensuring target directories exist...
+[LINE 143 - INFO] Determining crypto scheme from se_crypto_config.h...
+[LINE 155 - INFO] Crypto scheme selected: SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM
+[LINE 160 - INFO] Generating assembly key file: se_key.s
+[LINE 195 - INFO] Adding OEM Key 1 from OEM_KEY_COMPANY1_key_AES_GCM.bin
+[LINE 215 - INFO] Assembly key file generation complete.
+[LINE 219 - INFO] Setting up post-build script...
+[LINE 231 - INFO] Copying 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Scripts/SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts/postbuild.sh'
+[LINE 241 - INFO] Checking for application-specific common directory...
+[LINE 246 - INFO] 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/App_Common/App_Common_location.txt' found. Syncing post-build script to application.
+[LINE 276 - INFO] Ensuring application scripts directory exists: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common/Scripts
+[LINE 285 - INFO] Copying post-build script to application's common directory.
+[LINE 293 - INFO] Pre-build script finished successfully.

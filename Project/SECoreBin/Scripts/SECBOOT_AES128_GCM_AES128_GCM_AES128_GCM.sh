@@ -173,50 +173,17 @@ if [ ! -d "$KEYS_AND_IMAGES_DIR_ABS" ]; then
 fi
 
 
-if [ ! -d "$COMMON_ABS_DIR"/Binary ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Binary does not exist.
-  exit 1
-fi
-
 if [ ! -d "$COMMON_ABS_DIR"/Binary_Keys ]; then
   info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Binary_Keys does not exist.
   exit 1
 fi
 
-if [ ! -d "$COMMON_ABS_DIR"/Debug ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Debug does not exist.
-  exit 1
-fi
-
-if [ ! -d "$COMMON_ABS_DIR"/Debug/Middlewares ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Debug/Middlewares does not exist.
-  exit 1
-fi
-
-if [ ! -d "$COMMON_ABS_DIR"/Debug/Middlewares/STM32_Secure_Engine ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Debug/Middlewares/STM32_Secure_Engine does not exist.
-  exit 1
-fi
-
-if [ ! -d "$COMMON_ABS_DIR"/KeysAndImages_Util ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/KeysAndImages_Util does not exist.
-  exit 1
-fi
-
-if [ ! -d "$COMMON_ABS_DIR"/Linker ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Linker does not exist.
-  exit 1
-fi
 
 if [ ! -d "$COMMON_ABS_DIR"/Scripts ]; then
   info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Scripts does not exist.
   exit 1
 fi
 
-if [ ! -d "$COMMON_ABS_DIR"/Startup ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Startup does not exist.
-  exit 1
-fi
 
 info_log $LINENO "Project structure validation successful."
 

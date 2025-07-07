@@ -95,11 +95,6 @@ main() {
 
     # Auto-detect build mode from the current directory's name
     BUILD_MODE=$(basename "$(pwd)")
-    if [ "$BUILD_MODE" != "Debug" ] && [ "$BUILD_MODE" != "Release" ]; then
-        echo "[ERROR] Script must be run from a 'Debug' or 'Release' directory."
-        echo "         Current directory is: $(pwd)"
-        exit 1
-    fi
 
     # --- 2. Path and Logging Setup ---
 
@@ -212,6 +207,55 @@ main() {
         debug_log "$LINENO" "Copied 'se_interface_application.o' to '$DEST_SE_IF_DIR/'"
     else
         error_exit "$LINENO" "Secure Engine interface object file not found at '$SE_IF_OBJ_FILE_SOURCE'"
+    fi
+
+    # --- 5. Optional: Sync ELF with Application Common Directory ---
+
+    info_log "$LINENO" "Step 5: Checking for application-specific common directory..."
+    app_common_location_file="$COMMON_DIR_ABS/App_Common/App_Common_location.txt"
+    debug_log "$LINENO" "Checking for file: $app_common_location_file"
+
+    if [ -f "$app_common_location_file" ]; then
+        info_log "$LINENO" "'$app_common_location_file' found. Syncing SBSFU.elf to application."
+
+        # Read the path from the file
+        app_common_path_from_file=$(cat "$app_common_location_file")
+        debug_log "$LINENO" "Path read from file: $app_common_path_from_file"
+
+        # Resolve the path to be absolute, handling both absolute and relative paths.
+        case "$app_common_path_from_file" in
+            /*) # Absolute path for POSIX
+                app_common_dir_abs_temp="$app_common_path_from_file"
+                ;;
+            [a-zA-Z]:*) # Absolute path for Windows (e.g., C:...)
+                app_common_dir_abs_temp="$app_common_path_from_file"
+                ;;
+            *) # Relative path, assumed to be relative to the config file's location.
+                app_common_dir_abs_temp="$COMMON_DIR_ABS/App_Common/$app_common_path_from_file"
+                ;;
+        esac
+        debug_log "$LINENO" "Temporary resolved path: $app_common_dir_abs_temp"
+
+        # First, check if the resolved directory exists BEFORE trying to 'cd' into it.
+        if [ ! -d "$app_common_dir_abs_temp" ]; then
+            error_log "$LINENO" "Application Common directory '$app_common_dir_abs_temp' specified in file does not exist. Skipping copy."
+        else
+            # Now it's safe to normalize the path to get its canonical absolute name.
+            app_common_dir_abs="$(cd "$app_common_dir_abs_temp" && pwd)"
+            debug_log "$LINENO" "Final Resolved Application Common Dir: $app_common_dir_abs"
+
+            # Define target directory for the app and create it
+            app_dest_dir_abs="$app_common_dir_abs/$BUILD_MODE"
+            info_log "$LINENO" "Ensuring application artifacts directory exists: $app_dest_dir_abs"
+            mkdir -p "$app_dest_dir_abs"
+
+            # Copy the ELF file
+            info_log "$LINENO" "Copying SBSFU.elf to application's common directory."
+            cp "$DEST_DIR_ABS/SBSFU.elf" "$app_dest_dir_abs/"
+            debug_log "$LINENO" "Copied 'SBSFU.elf' to '$app_dest_dir_abs/'"
+        fi
+    else
+        debug_log "$LINENO" "'$app_common_location_file' not found. No application-specific sync needed."
     fi
 
     info_log "$LINENO" "Post-build script finished successfully."

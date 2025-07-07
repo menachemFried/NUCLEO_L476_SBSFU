@@ -14,7 +14,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="elf" artifactName="SBSFU" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.201050759" name="Debug" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug" postbuildStep="&quot;../Scripts/postbuild.sh&quot; &quot;${BuildArtifactFileName}&quot; &quot;../../Common&quot; 3 3 3">
+				<configuration artifactExtension="elf" artifactName="SBSFU" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.201050759" name="Debug" parent="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug" postbuildStep="&quot;../Scripts/postbuild.sh&quot; &quot;${BuildArtifactFileName}&quot; &quot;../../Common&quot; 3 2 3">
 					<folderInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.201050759." name="/" resourcePath="">
 						<toolChain id="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug.1168780828" name="MCU ARM GCC" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.toolchain.exe.debug">
 							<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.1436170708" name="MCU" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu" useByScannerDiscovery="true" value="STM32L476RGTx" valueType="string"/>
@@ -41,7 +41,7 @@
 									<listOptionValue builtIn="false" value="../Application/Core/Inc"/>
 									<listOptionValue builtIn="false" value="../Application/BFU/App"/>
 									<listOptionValue builtIn="false" value="../Application/BFU/Target"/>
-									<listOptionValue builtIn="false" value="../../Temp/SECoreBin/Application/Core/Inc"/>
+									<listOptionValue builtIn="false" value="../../SECoreBin/Application/Core/Inc"/>
 									<listOptionValue builtIn="false" value="../../Common/Linker"/>
 									<listOptionValue builtIn="false" value="../../SBSFU_LIB_V2.7.0/Drivers/BSP/STM32L4xx_Nucleo"/>
 									<listOptionValue builtIn="false" value="../../SBSFU_LIB_V2.7.0/Drivers/BSP/Components/Common"/>

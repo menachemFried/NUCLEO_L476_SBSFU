@@ -1,7 +1,36 @@
-[LINE 54 - DEBUG] Project Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin
-[LINE 55 - DEBUG] Common Dir:  C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common
-[LINE 56 - DEBUG] Log Modes (I/D/E): 3/3/3
-[LINE 66 - DEBUG] All required Common sub-directories are present.
-[LINE 109 - DEBUG] PrepareImage path: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/KeysAndImages_Util/win/prepareimage/prepareimage.exe
-[LINE 162 - DEBUG] Processing AES keys of type: CBC
-[LINE 174 - DEBUG] Processing ECC public keys.
+[LINE 61 - DEBUG] Project Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin
+[LINE 62 - DEBUG] Common Dir:  C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common
+[LINE 63 - DEBUG] Log Modes (I/D/E): 3/2/3
+[LINE 64 - DEBUG] OUTPUT_DIR_ABS: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Output
+[LINE 65 - DEBUG] LOG_INFO_FILE: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Output/info.log
+[LINE 66 - DEBUG] LOG_DEBUG_FILE: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Output/debug.log
+[LINE 67 - DEBUG] LOG_ERROR_FILE: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Output/error.log
+[LINE 77 - DEBUG] All required Common source sub-directories are present.
+[LINE 87 - DEBUG] scripts_dir_abs: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Scripts
+[LINE 88 - DEBUG] common_scripts_dir_abs: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts
+[LINE 89 - DEBUG] common_image_util_dir_abs: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/KeysAndImages_Util
+[LINE 90 - DEBUG] common_binary_keys_dir_abs: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Binary_Keys
+[LINE 91 - DEBUG] common_startup_dir_abs: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Startup
+[LINE 92 - DEBUG] crypto_header_file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Application/Core/Inc/se_crypto_config.h
+[LINE 93 - DEBUG] asm_file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Startup/se_key.s
+[LINE 101 - DEBUG] prepare_image_exe: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/KeysAndImages_Util/win/prepareimage/prepareimage.exe
+[LINE 102 - DEBUG] prepare_image_py: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/KeysAndImages_Util/prepareimage.py
+[LINE 115 - DEBUG] is_windows: true
+[LINE 130 - DEBUG] PrepareImage path: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/KeysAndImages_Util/win/prepareimage/prepareimage.exe
+[LINE 137 - DEBUG] Ensured directory exists: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Startup
+[LINE 138 - DEBUG] Ensured directory exists: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts
+[LINE 156 - DEBUG] crypto_scheme: SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM
+[LINE 162 - DEBUG] cortex_arch: V7M
+[LINE 187 - DEBUG] aes_type: GCM
+[LINE 190 - DEBUG] Processing AES keys of type: GCM
+[LINE 193 - DEBUG] oem_key_file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Binary_Keys/OEM_KEY_COMPANY1_key_AES_GCM.bin
+[LINE 193 - DEBUG] oem_key_file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Binary_Keys/OEM_KEY_COMPANY2_key_AES_GCM.bin
+[LINE 193 - DEBUG] oem_key_file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Binary_Keys/OEM_KEY_COMPANY3_key_AES_GCM.bin
+[LINE 222 - DEBUG] post_build_source: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/SECoreBin/Scripts/SECBOOT_AES128_GCM_AES128_GCM_AES128_GCM.sh
+[LINE 223 - DEBUG] post_build_target: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts/postbuild.sh
+[LINE 243 - DEBUG] Checking for file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/App_Common/App_Common_location.txt
+[LINE 250 - DEBUG] Path read from file: ../../../../../OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 264 - DEBUG] Temporary resolved path: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/App_Common/../../../../../OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 272 - DEBUG] Final Resolved Application Common Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 281 - DEBUG] Source postbuild script: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Scripts/postbuild.sh
+[LINE 282 - DEBUG] Destination postbuild script: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common/Scripts/postbuild.sh

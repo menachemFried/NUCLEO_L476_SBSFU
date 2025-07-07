@@ -1,19 +1,24 @@
-[LINE 52 - DEBUG] --- Initial Values & Paths ---
-[LINE 53 - DEBUG] Build Mode (auto-detected): Debug
-[LINE 54 - DEBUG] SBSFU ELF Filename (param 1): SBSFU.elf
-[LINE 55 - DEBUG] Common Dir Relative (param 2): ../../Common
-[LINE 56 - DEBUG] Log Modes (I/D/E): 3/3/3
-[LINE 57 - DEBUG]  
-[LINE 58 - DEBUG] --- Constructed Paths ---
-[LINE 59 - DEBUG] BFU Project Root (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU
-[LINE 60 - DEBUG] Log Directory: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU/Output
-[LINE 61 - DEBUG] Source Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU/Debug
-[LINE 62 - DEBUG] Common Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common
-[LINE 63 - DEBUG] Artifacts Dest Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug
-[LINE 64 - DEBUG] Linker Script Dest Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Linker
-[LINE 65 - DEBUG] SE Interface Dest Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/Middlewares/STM32_Secure_Engine
-[LINE 66 - DEBUG] ---------------------------------
-[LINE 99 - DEBUG] Found 1 matching API symbols.
-[LINE 107 - DEBUG] Generated linker script at 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Linker/se_interface_app.ld'
-[LINE 122 - DEBUG] Copied 'SBSFU.elf' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/SBSFU.elf'
-[LINE 128 - DEBUG] Copied 'se_interface_application.o' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/Middlewares/STM32_Secure_Engine/'
+[LINE 47 - DEBUG] --- Initial Values & Paths ---
+[LINE 48 - DEBUG] Build Mode (auto-detected): Debug
+[LINE 49 - DEBUG] SBSFU ELF Filename (param 1): SBSFU.elf
+[LINE 50 - DEBUG] Common Dir Relative (param 2): ../../Common
+[LINE 51 - DEBUG] Log Modes (I/D/E): 3/2/3
+[LINE 52 - DEBUG]  
+[LINE 53 - DEBUG] --- Constructed Paths ---
+[LINE 54 - DEBUG] BFU Project Root (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU
+[LINE 55 - DEBUG] Log Directory: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU/Output
+[LINE 56 - DEBUG] Source Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/BFU/Debug
+[LINE 57 - DEBUG] Common Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common
+[LINE 58 - DEBUG] Artifacts Dest Dir (abs): C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug
+[LINE 59 - DEBUG] Linker Script Dest Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Linker
+[LINE 60 - DEBUG] SE Interface Dest Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/Middlewares/STM32_Secure_Engine
+[LINE 61 - DEBUG] ---------------------------------
+[LINE 94 - DEBUG] Found 1 matching API symbols.
+[LINE 102 - DEBUG] Generated linker script at 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Linker/se_interface_app.ld'
+[LINE 117 - DEBUG] Copied 'SBSFU.elf' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/SBSFU.elf'
+[LINE 123 - DEBUG] Copied 'se_interface_application.o' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/Debug/Middlewares/STM32_Secure_Engine/'
+[LINE 132 - DEBUG] Checking for file: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/App_Common/App_Common_location.txt
+[LINE 139 - DEBUG] Path read from file: ../../../../../OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 153 - DEBUG] Temporary resolved path: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_SBSFU/Project/Common/App_Common/../../../../../OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 161 - DEBUG] Final Resolved Application Common Dir: C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common
+[LINE 171 - DEBUG] Copied 'SBSFU.elf' to 'C:/Users/Menachem Fried/OneDrive - Binata/NUCLEO_L476_USERAPP/Project/Common/Debug/'
