@@ -62,39 +62,31 @@ LOG_INFO_MODE=${6:-$LOG_INFO_MODE}
 LOG_DEBUG_MODE=${7:-$LOG_DEBUG_MODE}
 LOG_ERROR_MODE=${8:-$LOG_ERROR_MODE}
 
+
+
+
 # --- 2. HELPER FUNCTION ---
 
 
 # --- Logging Functions ---
-debug_log() {
-    local message="[LINE $1 - DEBUG] $2"
-    case $LOG_DEBUG_MODE in
-        1) echo -e "$message";;
-        2) echo -e "$message" >> "$LOG_DEBUG_FILE";;
-        3) echo -e "$message" | tee -a "$LOG_DEBUG_FILE";;
-        *) ;;
+_log() {
+    line_num="$1"
+    log_type="$2"
+    message="$3"
+    log_mode="$4"
+    log_file="$5"
+
+    formatted_message="[LINE $line_num - $log_type] $message"
+    case "$log_mode" in
+        1) echo "$formatted_message";;
+        2) echo "$formatted_message" >> "$log_file";;
+        3) echo "$formatted_message" | tee -a "$log_file";;
     esac
 }
 
-info_log() {
-    local message="[LINE $1 - INFO] $2"
-    case $LOG_INFO_MODE in
-        1) echo -e "$message";;
-        2) echo -e "$message" >> "$LOG_INFO_FILE";;
-        3) echo -e "$message" | tee -a "$LOG_INFO_FILE";;
-        *) ;;
-    esac
-}
-
-error_log() {
-    local message="[LINE $1 - ERROR] $2"
-    case $LOG_ERROR_MODE in
-        1) echo -e "$message";;
-        2) echo -e "$message" >> "$LOG_ERROR_FILE";;
-        3) echo -e "$message" | tee -a "$LOG_ERROR_FILE";;
-        *) ;;
-    esac
-}
+info_log()  { _log "$1" "INFO"  "$2" "$LOG_INFO_MODE"  "$LOG_INFO_FILE"; }
+debug_log() { _log "$1" "DEBUG" "$2" "$LOG_DEBUG_MODE" "$LOG_DEBUG_FILE"; }
+error_log() { _log "$1" "ERROR" "$2" "$LOG_ERROR_MODE" "$LOG_ERROR_FILE"; }
 
 
 # --- 3. SCRIPT BODY ---
@@ -104,8 +96,14 @@ info_log $LINENO "--- Post-Build Script Started ---"
 info_log $LINENO "Validating arguments and assigning initial relative variables..."
 
 if [ "$#" -lt 8 ]; then
-  error_log $LINENO "ERROR: At least 8 arguments are required."
-  error_log $LINENO "Usage: $0 <build_dir> <elf_file> <bin_file> <fw_id> <version> <log_info_mode> <log_debug_mode> <log_error_mode> [<force_bigelf>]"
+    echo "Usage: $0 <UserApp Build Dir> <UserApp ELF> <UserApp BIN> <FW ID> <FW Version> [Log-I] [Log-D] [Log-E] [ForceBigELF]"
+    echo "  - UserApp Build Dir:  Path to the UserApp build directory (e.g., 'Debug')."
+    echo "  - UserApp ELF File:   Path to the UserApp ELF file."
+    echo "  - UserApp BIN File:   Path to the UserApp BIN file (the firmware to package)."
+    echo "  - FW ID:              The firmware slot identifier (e.g., 1, 2, or 3)."
+    echo "  - FW Version:         The version number for the firmware header."
+    echo "  - Log Modes (Opt):    1=Console, 2=File, 3=Both. Defaults to 1."
+    echo "  - ForceBigELF (Opt):  Any value to force generation of merged ELF."
   exit 1
 fi
 
@@ -121,12 +119,16 @@ debug_log $LINENO "Relative Arg 4 (FW ID): \"$FW_ID\""
 VERSION="$5"
 debug_log $LINENO "Relative Arg 5 (Version): \"$VERSION\""
 
-if [ "$#" -eq 9 ]; then
+if [ "$#" -ge 9 ]; then
   FORCE_BIGELF=1
   debug_log $LINENO "Relative Arg 6 detected: 'force_bigelf' is enabled."
 else
   FORCE_BIGELF=0
 fi
+
+# Auto-detect build mode from the current directory's name
+BUILD_MODE=$(basename "$(pwd)")
+debug_log "$LINENO" "Build Mode (auto-detected): $BUILD_MODE"
 
 # --- STEP B: CONVERT ALL PATHS TO ABSOLUTE AND LOG THEM ---
 debug_log $LINENO "Converting all paths to absolute and logging them..."
@@ -155,10 +157,10 @@ debug_log $LINENO "BIN File (Absolute): \"$BIN_FILE_ABS\""
 BINARY_OUTPUT_DIR_ABS=$(cd "$PROJECT_DIR_ABS/../Binary" && pwd)
 debug_log $LINENO "Binary Output Directory (Absolute): \"$BINARY_OUTPUT_DIR_ABS\""
 
-KEYS_AND_IMAGES_DIR_ABS=$(cd "$COMMON_ABS_DIR/KeysAndImages_Util" && pwd)
+KEYS_AND_IMAGES_DIR_ABS="$COMMON_ABS_DIR/KeysAndImages_Util"
 debug_log $LINENO "Keys/Images Util Directory (Absolute): \"$KEYS_AND_IMAGES_DIR_ABS\""
 
-SBSFU_ELF_ABS=$(cd "$COMMON_ABS_DIR/Debug" && pwd)/SBSFU.elf
+SBSFU_ELF_ABS="$COMMON_ABS_DIR"/"$BUILD_MODE"/SBSFU.elf
 debug_log $LINENO "SBSFU ELF (Absolute): \"$SBSFU_ELF_ABS\""
 
 REF_USER_APP_ABS="$PROJECT_DIR_ABS/RefUserApp.bin"
@@ -168,19 +170,31 @@ debug_log $LINENO "Reference User App (Absolute): \"$REF_USER_APP_ABS\""
 # --- STEP C: PROJECT STRUCTURE VALIDATION ---
 info_log $LINENO "Validating project structure using absolute paths..."
 if [ ! -d "$KEYS_AND_IMAGES_DIR_ABS" ]; then
-  info_log $LINENO "ERROR: Required directory for 'prepareimage' tool does not exist at "$KEYS_AND_IMAGES_DIR_ABS"."
+  info_log $LINENO "ERROR: Required directory for 'prepareimage' tool does not exist at $KEYS_AND_IMAGES_DIR_ABS."
   exit 1
 fi
 
 
 if [ ! -d "$COMMON_ABS_DIR"/Binary_Keys ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Binary_Keys does not exist.
+  info_log $LINENO "Common Directory $COMMON_ABS_DIR/Binary_Keys does not exist."
   exit 1
 fi
 
 
 if [ ! -d "$COMMON_ABS_DIR"/Scripts ]; then
-  info_log $LINENO Common Directory "$COMMON_ABS_DIR"/Scripts does not exist.
+  info_log $LINENO "Common Directory $COMMON_ABS_DIR/Scripts does not exist."
+  exit 1
+fi
+
+
+if [ ! -d "$COMMON_ABS_DIR"/"$BUILD_MODE" ]; then
+  info_log $LINENO "Common Directory $COMMON_ABS_DIR/$BUILD_MODE does not exist."
+  exit 1
+fi
+
+
+if [ ! -f "$SBSFU_ELF_ABS" ]; then
+  error_log "$LINENO" "SBSFU ELF not found at $SBSFU_ELF_ABS"
   exit 1
 fi
 
@@ -230,8 +244,8 @@ debug_log $LINENO "Partial Offset File (Absolute): \"$PARTIAL_OFFSET_ABS\""
 # --- STEP E: SELECT PREPAREIMAGE TOOL ---
 info_log $LINENO "Detecting platform to select prepareimage tool..."
 PREPARE_IMAGE_CMD="python"
-PREPARE_IMAGE_SCRIPT="\"${KEYS_AND_IMAGES_DIR_ABS}/prepareimage.py\""
-
+PREPARE_IMAGE_SCRIPT="${KEYS_AND_IMAGES_DIR_ABS}/prepareimage.py"
+PREPARE_IMAGE_CMD_SCRIPT="\"$PREPARE_IMAGE_CMD\" \"$PREPARE_IMAGE_SCRIPT\""
 
 # test if window executable usable
 
@@ -240,11 +254,18 @@ if uname | grep -i -e windows -e mingw >/dev/null 2>&1 && [ -f "${KEYS_AND_IMAGE
     info_log $LINENO "Windows environment detected. Using prepareimage.exe"
     PREPARE_IMAGE_CMD="${KEYS_AND_IMAGES_DIR_ABS}/win/prepareimage/prepareimage.exe"
     PREPARE_IMAGE_SCRIPT=""
+    PREPARE_IMAGE_CMD_SCRIPT="\"$PREPARE_IMAGE_CMD\""
 else
     info_log $LINENO "Linux/macOS or no .exe found. Using python script."
 fi
 debug_log $LINENO "Prepareimage command set to: $PREPARE_IMAGE_CMD"
 debug_log $LINENO "Prepareimage script set to: $PREPARE_IMAGE_SCRIPT"
+
+
+set -- "$PREPARE_IMAGE_CMD"
+if [ -n "$PREPARE_IMAGE_SCRIPT" ]; then
+  set -- "$@" "$PREPARE_IMAGE_SCRIPT"
+fi
 
 # --- STEP F: MAIN EXECUTION FLOW (with nested ifs) ---
 debug_log $LINENO "Ensuring Binary output directory exists..."
@@ -252,54 +273,34 @@ mkdir -p "$BINARY_OUTPUT_DIR_ABS"
 ret=$?
 if [ $ret -eq 0 ]; then
   # Convert paths to Unix format for the tool
-  info_log $LINENO "Converting paths to UNIX format for the tool..."
-  BIN_FILE_UNIX=$(echo "$BIN_FILE_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted BIN File: \"$BIN_FILE_UNIX\""
-  SFU_FILE_UNIX=$(echo "$SFU_FILE_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted SFU File: \"$SFU_FILE_UNIX\""
-  SIGN_FILE_UNIX=$(echo "$SIGN_FILE_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted SIGN File: \"$SIGN_FILE_UNIX\""
-  SFB_FILE_UNIX=$(echo "$SFB_FILE_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted SFB File: \"$SFB_FILE_UNIX\""
-  HEADER_BIN_UNIX=$(echo "$HEADER_BIN_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted Header BIN File: \"$HEADER_BIN_UNIX\""
-  BIGBINARY_UNIX=$(echo "$BIGBINARY_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted Big Binary File: \"$BIGBINARY_UNIX\""
-  OEM_KEY_UNIX=$(echo "$OEM_KEY_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted OEM Key File: \"$OEM_KEY_UNIX\""
-  NONCE_UNIX=$(echo "$NONCE_FILE_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted Nonce File: \"$NONCE_UNIX\""
-  SBSFU_ELF_UNIX=$(echo "$SBSFU_ELF_ABS" | sed 's/\\/\//g')
-  debug_log $LINENO "UNIX-formatted SBSFU ELF File: \"$SBSFU_ELF_UNIX\""
-
   info_log $LINENO "1. Encrypting binary..."
-  command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" enc -k \"$OEM_KEY_UNIX\" -n \"$NONCE_UNIX\" \"$BIN_FILE_UNIX\" \"$SFU_FILE_UNIX\""
+  command="$PREPARE_IMAGE_CMD_SCRIPT enc -k \"$OEM_KEY_ABS\" -n \"$NONCE_FILE_ABS\" \"$BIN_FILE_ABS\" \"$SFU_FILE_ABS\""
   debug_log $LINENO "EXECUTING: $command"
-  "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" enc -k "$OEM_KEY_UNIX" -n "$NONCE_UNIX" "$BIN_FILE_UNIX" "$SFU_FILE_UNIX" > "$PROJECT_DIR_ABS"/output.txt
+  "$@" enc -k "$OEM_KEY_ABS" -n "$NONCE_FILE_ABS" "$BIN_FILE_ABS" "$SFU_FILE_ABS" > "$OUTPUT_DIR"/output.txt
   ret=$?
 if [ $ret -eq 0 ]; then
   info_log $LINENO "2. Signing binary..."
-  command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" sign -k \"$OEM_KEY_UNIX\" -n \"$NONCE_UNIX\" \"$BIN_FILE_UNIX\" \"$SIGN_FILE_UNIX\""
+  command="$PREPARE_IMAGE_CMD_SCRIPT sign -k \"$OEM_KEY_ABS\" -n \"$NONCE_FILE_ABS\" \"$BIN_FILE_ABS\" \"$SIGN_FILE_ABS\""
   debug_log $LINENO "EXECUTING: $command"
-  "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" sign -k "$OEM_KEY_UNIX" -n "$NONCE_UNIX" "$BIN_FILE_UNIX" "$SIGN_FILE_UNIX" > "$PROJECT_DIR_ABS"/output.txt
+  "$@" sign -k "$OEM_KEY_ABS" -n "$NONCE_FILE_ABS" "$BIN_FILE_ABS" "$SIGN_FILE_ABS" > "$OUTPUT_DIR"/output.txt
   ret=$?
     if [ $ret -eq 0 ]; then
       info_log $LINENO "3. Packing SFB file..."
-      command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" pack -m \"$MAGIC\" -k \"$OEM_KEY_UNIX\" -r 112 -v \"$VERSION\" -n \"$NONCE_UNIX\" -f \"$SFU_FILE_UNIX\" -t \"$SIGN_FILE_UNIX\" \"$SFB_FILE_UNIX\" -o \"$OFFSET\""
+      command="$PREPARE_IMAGE_CMD_SCRIPT pack -m \"$MAGIC\" -k \"$OEM_KEY_ABS\" -r 112 -v \"$VERSION\" -n \"$NONCE_FILE_ABS\" -f \"$SFU_FILE_ABS\" -t \"$SIGN_FILE_ABS\" \"$SFB_FILE_ABS\" -o \"$OFFSET\""
       debug_log $LINENO "EXECUTING: $command"
-      "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" pack -m "$MAGIC" -k "$OEM_KEY_UNIX" -r 112 -v "$VERSION" -n "$NONCE_UNIX" -f "$SFU_FILE_UNIX" -t "$SIGN_FILE_UNIX" "$SFB_FILE_UNIX" -o "$OFFSET" >> "$PROJECT_DIR_ABS"/output.txt
+      "$@" pack -m "$MAGIC" -k "$OEM_KEY_ABS" -r 112 -v "$VERSION" -n "$NONCE_FILE_ABS" -f "$SFU_FILE_ABS" -t "$SIGN_FILE_ABS" "$SFB_FILE_ABS" -o "$OFFSET" >> "$OUTPUT_DIR"/output.txt
       ret=$?
       if [ $ret -eq 0 ]; then
         info_log $LINENO "4. Creating header binary..."
-        command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" header -m \"$MAGIC\" -k \"$OEM_KEY_UNIX\" -r 112 -v \"$VERSION\" -n \"$NONCE_UNIX\" -f \"$SFU_FILE_UNIX\" -t \"$SIGN_FILE_UNIX\" -o \"$OFFSET\" \"$HEADER_BIN_UNIX\""
+        command="$PREPARE_IMAGE_CMD_SCRIPT header -m \"$MAGIC\" -k \"$OEM_KEY_ABS\" -r 112 -v \"$VERSION\" -n \"$NONCE_FILE_ABS\" -f \"$SFU_FILE_ABS\" -t \"$SIGN_FILE_ABS\" -o \"$OFFSET\" \"$HEADER_BIN_ABS\""
         debug_log $LINENO "EXECUTING: $command"
-        "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" header -m "$MAGIC" -k "$OEM_KEY_UNIX" -r 112 -v "$VERSION" -n "$NONCE_UNIX" -f "$SFU_FILE_UNIX" -t "$SIGN_FILE_UNIX" -o "$OFFSET" "$HEADER_BIN_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+        "$@" header -m "$MAGIC" -k "$OEM_KEY_ABS" -r 112 -v "$VERSION" -n "$NONCE_FILE_ABS" -f "$SFU_FILE_ABS" -t "$SIGN_FILE_ABS" -o "$OFFSET" "$HEADER_BIN_ABS" >> "$OUTPUT_DIR"/output.txt
         ret=$?
         if [ $ret -eq 0 ]; then
           info_log $LINENO "5. Merging to create big binary..."
-          command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" merge -v 0 -e 1 -i \"$HEADER_BIN_UNIX\" -s \"$SBSFU_ELF_UNIX\" -u \"$ELF_FILE\" \"$BIGBINARY_UNIX\""
+          command="$PREPARE_IMAGE_CMD_SCRIPT merge -v 0 -e 1 -i \"$HEADER_BIN_ABS\" -s \"$SBSFU_ELF_ABS\" -u \"$ELF_FILE\" \"$BIGBINARY_ABS\""
           debug_log $LINENO "EXECUTING: $command"
-          "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" merge -v 0 -e 1 -i "$HEADER_BIN_UNIX" -s "$SBSFU_ELF_UNIX" -u "$ELF_FILE" "$BIGBINARY_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+          "$@" merge -v 0 -e 1 -i "$HEADER_BIN_ABS" -s "$SBSFU_ELF_ABS" -u "$ELF_FILE" "$BIGBINARY_ABS" >> "$OUTPUT_DIR"/output.txt
           ret=$?
           if [ $ret -eq 0 ]; then
             # Partial image generation if reference userapp exists
@@ -321,27 +322,27 @@ if [ $ret -eq 0 ]; then
               debug_log $LINENO "UNIX-formatted Reference User App File: \"$REF_USER_APP_UNIX\""
 
               info_log $LINENO "6a. Creating diff..."
-              command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" diff -1 \"$REF_USER_APP_UNIX\" -2 \"$BIN_FILE_UNIX\" \"$PARTIAL_BIN_UNIX\" -a \"$ALIGNMENT\" --poffset \"$PARTIAL_OFFSET_UNIX\""
+              command="$PREPARE_IMAGE_CMD_SCRIPT diff -1 \"$REF_USER_APP_UNIX\" -2 \"$BIN_FILE_ABS\" \"$PARTIAL_BIN_UNIX\" -a \"$ALIGNMENT\" --poffset \"$PARTIAL_OFFSET_UNIX\""
               debug_log $LINENO "EXECUTING: $command"
-              "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" diff -1 "$REF_USER_APP_UNIX" -2 "$BIN_FILE_UNIX" "$PARTIAL_BIN_UNIX" -a "$ALIGNMENT" --poffset "$PARTIAL_OFFSET_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+              "$@" diff -1 "$REF_USER_APP_UNIX" -2 "$BIN_FILE_ABS" "$PARTIAL_BIN_UNIX" -a "$ALIGNMENT" --poffset "$PARTIAL_OFFSET_UNIX" >> "$OUTPUT_DIR"/output.txt
               ret=$?
               if [ $ret -eq 0 ]; then
                 info_log $LINENO "6b. Encrypting partial binary..."
-                command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" enc -k \"$OEM_KEY_UNIX\" -n \"$NONCE_UNIX\" \"$PARTIAL_BIN_UNIX\" \"$PARTIAL_SFU_UNIX\""
+                command="$PREPARE_IMAGE_CMD_SCRIPT enc -k \"$OEM_KEY_ABS\" -n \"$NONCE_FILE_ABS\" \"$PARTIAL_BIN_UNIX\" \"$PARTIAL_SFU_UNIX\""
                 debug_log $LINENO "EXECUTING: $command"
-                "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" enc -k "$OEM_KEY_UNIX" -n "$NONCE_UNIX" "$PARTIAL_BIN_UNIX" "$PARTIAL_SFU_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+                "$@" enc -k "$OEM_KEY_ABS" -n "$NONCE_FILE_ABS" "$PARTIAL_BIN_UNIX" "$PARTIAL_SFU_UNIX" >> "$OUTPUT_DIR"/output.txt
                 ret=$?
                 if [ $ret -eq 0 ]; then
                   info_log $LINENO "6c. Signing partial binary..."
-                  command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" sign -k \"$OEM_KEY_UNIX\" -n \"$NONCE_UNIX\" \"$PARTIAL_BIN_UNIX\" \"$PARTIAL_SIGN_UNIX\""
+                  command="$PREPARE_IMAGE_CMD_SCRIPT sign -k \"$OEM_KEY_ABS\" -n \"$NONCE_FILE_ABS\" \"$PARTIAL_BIN_UNIX\" \"$PARTIAL_SIGN_UNIX\""
                   debug_log $LINENO "EXECUTING: $command"
-                  "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" sign -k "$OEM_KEY_UNIX" -n "$NONCE_UNIX" "$PARTIAL_BIN_UNIX" "$PARTIAL_SIGN_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+                  "$@" sign -k "$OEM_KEY_ABS" -n "$NONCE_FILE_ABS" "$PARTIAL_BIN_UNIX" "$PARTIAL_SIGN_UNIX" >> "$OUTPUT_DIR"/output.txt
                   ret=$?
                   if [ $ret -eq 0 ]; then
                     info_log $LINENO "6d. Packing partial SFB..."
-                    command="\"$PREPARE_IMAGE_CMD\"\"$PREPARE_IMAGE_SCRIPT\" pack -m \"$MAGIC\" -k \"$OEM_KEY_UNIX\" -r 112 -v \"$VERSION\" -n \"$NONCE_UNIX\" -f \"$SFU_FILE_UNIX\" -t \"$SIGN_FILE_UNIX\" -o 512 --pfw \"$PARTIAL_SFU_UNIX\" --ptag \"$PARTIAL_SIGN_UNIX\" --poffset \"$PARTIAL_OFFSET_UNIX\" \"$PARTIAL_SFB_UNIX\""
+                    command="$PREPARE_IMAGE_CMD_SCRIPT pack -m \"$MAGIC\" -k \"$OEM_KEY_ABS\" -r 112 -v \"$VERSION\" -n \"$NONCE_FILE_ABS\" -f \"$SFU_FILE_ABS\" -t \"$SIGN_FILE_ABS\" -o 512 --pfw \"$PARTIAL_SFU_UNIX\" --ptag \"$PARTIAL_SIGN_UNIX\" --poffset \"$PARTIAL_OFFSET_UNIX\" \"$PARTIAL_SFB_UNIX\""
                     debug_log $LINENO "EXECUTING: $command"
-                    "$PREPARE_IMAGE_CMD""$PREPARE_IMAGE_SCRIPT" pack -m "$MAGIC" -k "$OEM_KEY_UNIX" -r 112 -v "$VERSION" -n "$NONCE_UNIX" -f "$SFU_FILE_UNIX" -t "$SIGN_FILE_UNIX" -o 512 --pfw "$PARTIAL_SFU_UNIX" --ptag "$PARTIAL_SIGN_UNIX" --poffset "$PARTIAL_OFFSET_UNIX" "$PARTIAL_SFB_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+                    "$@" pack -m "$MAGIC" -k "$OEM_KEY_ABS" -r 112 -v "$VERSION" -n "$NONCE_FILE_ABS" -f "$SFU_FILE_ABS" -t "$SIGN_FILE_ABS" -o 512 --pfw "$PARTIAL_SFU_UNIX" --ptag "$PARTIAL_SIGN_UNIX" --poffset "$PARTIAL_OFFSET_UNIX" "$PARTIAL_SFB_UNIX" >> "$OUTPUT_DIR"/output.txt
                     ret=$?
                   fi
                 fi
@@ -367,9 +368,9 @@ if [ $ret -eq 0 ]; then
             fi
           fi
           info_log $LINENO "Using programmer tool: $PROGRAMMER_TOOL"
-          command="$PROGRAMMER_TOOL -ms \"$ELF_FILE\" \"$HEADER_BIN_UNIX\" \"$SBSFU_ELF_UNIX\""
+          command="$PROGRAMMER_TOOL -ms \"$ELF_FILE\" \"$HEADER_BIN_ABS\" \"$SBSFU_ELF_ABS\""
           debug_log $LINENO "EXECUTING: $command"
-          "$PROGRAMMER_TOOL" -ms "$ELF_FILE" "$HEADER_BIN_UNIX" "$SBSFU_ELF_UNIX" >> "$PROJECT_DIR_ABS"/output.txt
+          "$PROGRAMMER_TOOL" -ms "$ELF_FILE" "$HEADER_BIN_ABS" "$SBSFU_ELF_ABS" >> "$PROJECT_DIR_ABS"/output.txt
           ret=$?
         fi
       fi
