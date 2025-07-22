@@ -147,12 +147,6 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="L476_SBSFU_SECoreBin.fr.ac6.managedbuild.target.gnu.cross.exe.828278725" name="Executable"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1340367184;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1340367184.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.27187193;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.2101831956">
-			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Debug">
@@ -160,4 +154,13 @@
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1178735399;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1178735399.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1461591759;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.688026001">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="fr.ac6.managedbuild.config.gnu.cross.exe.debug.1340367184;fr.ac6.managedbuild.config.gnu.cross.exe.debug.1340367184.;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.27187193;fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.2101831956">
+			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
 </cproject>
